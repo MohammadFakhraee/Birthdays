@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/DefFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.create.CreatePersonFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingBottom="?attr/actionBarSize">
+
+            <LinearLayout
+                android:id="@+id/linearLayout"
+                android:layout_width="0dp"
+                android:layout_height="?attr/actionBarSize"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
+
+                <ImageButton
+                    android:id="@+id/backBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:background="@android:color/transparent"
+                    android:contentDescription="@string/content_description_back_to_main_page"
+                    android:tint="@color/black"
+                    app:srcCompat="@drawable/ic_arrow_back_24" />
+
+                <TextView
+                    style="@style/TextTitle"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="@dimen/margin"
+                    android:layout_weight="1"
+                    android:gravity="start"
+                    android:text="@string/create_person" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="@dimen/margin" />
+            </LinearLayout>
+
+            <View
+                android:id="@+id/view"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/line_width"
+                android:background="@color/gray400"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/linearLayout" />
+
+            <de.hdodenhof.circleimageview.CircleImageView
+                android:id="@+id/selectedIv"
+                android:layout_width="@dimen/circle_image_large"
+                android:layout_height="@dimen/circle_image_large"
+                android:layout_marginTop="@dimen/margin_large"
+                android:src="@drawable/ic_avatar_1"
+                android:tag="Male_1"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/linearLayout" />
+
+            <ImageView
+                android:id="@+id/choosePhotoIv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="@+id/selectedIv"
+                app:layout_constraintEnd_toEndOf="@+id/selectedIv"
+                app:srcCompat="@drawable/ic_add_a_photo_32" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/avatarsRv"
+                style="@style/RecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/selectedIv"
+                tools:itemCount="7"
+                tools:listitem="@layout/item_avatar" />
+
+            <EditText
+                android:id="@+id/personNameEt"
+                style="@style/EditText"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/margin"
+                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginEnd="@dimen/margin"
+                android:autofillHints=""
+                android:hint="@string/hint_name"
+                android:inputType="textPersonName"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/avatarsRv" />
+
+            <TextView
+                android:id="@+id/birthdayTv"
+                style="@style/TextMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="@string/birthday"
+                app:layout_constraintStart_toStartOf="@+id/personNameEt"
+                app:layout_constraintTop_toBottomOf="@+id/personNameEt" />
+
+            <TextView
+                android:id="@+id/chooseBirthdayTv"
+                style="@style/TextSmall.Highlight"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:gravity="end"
+                android:text="@string/tap_to_choose"
+                app:layout_constraintBottom_toBottomOf="@+id/birthdayTv"
+                app:layout_constraintEnd_toEndOf="@+id/personNameEt"
+                app:layout_constraintStart_toEndOf="@+id/birthdayTv"
+                app:layout_constraintTop_toTopOf="@+id/birthdayTv" />
+
+            <TextView
+                android:id="@+id/groupGv"
+                style="@style/TextMain"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/margin_large"
+                android:text="@string/group"
+                app:layout_constraintStart_toStartOf="@+id/personNameEt"
+                app:layout_constraintTop_toBottomOf="@+id/birthdayTv" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/groupListRv"
+                style="@style/RecyclerView"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/groupGv"
+                tools:itemCount="5"
+                tools:listitem="@layout/item_group" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/createBtn"
+        style="@style/DefBtn.Primary"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:enabled="false"
+        android:text="@string/create" />
+
+    <ProgressBar
+        android:id="@+id/loadingPb"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center_horizontal|bottom"
+        android:layout_marginBottom="@dimen/margin"
+        android:visibility="gone" />
+
+    <com.isseiaoki.simplecropview.CropImageView
+        android:id="@+id/imageCropperIv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/white"
+        android:visibility="gone"
+        app:scv_background_color="@color/black"
+        app:scv_crop_mode="circle"
+        app:scv_handle_color="@color/colorAccent" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/acceptCropFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="end|bottom"
+        android:layout_margin="@dimen/margin_large"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_done_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/cancelCropFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="start|bottom"
+        android:layout_margin="@dimen/margin_large"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_cancel_24" />
+</FrameLayout>

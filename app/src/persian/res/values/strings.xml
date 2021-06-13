@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">تولدش</string>
+
+    // Texts used in Create Person page
+    <string name="create_person">تولد جدید</string>
+    <string name="hint_name">نام</string>
+    <string name="birthday">تولد</string>
+    <string name="tap_to_choose">برای انتخاب ضربه بزنید</string>
+    <string name="group">گروه</string>
+    <string name="create">ساخت</string>
+    <string name="update">تغییر</string>
+    <string name="content_description_back_to_main_page">بازگشت به صفحه اصلی</string>
+
+    // used in Birthday List page
+    <string name="add_birthday_by_selecting_add_button">برای افزودن تولد جدید، روی دکمه افزودن کلیک کنید :)</string>
+    <string name="today_is_the_day">امروز تولدشه!</string>
+    <string name="turns_age_days">%2$d روز دیگر %1$d ساله می شود</string>
+    <string name="turns_age_day">%2$d روز دیگر %1$d ساله می شود</string>
+    <string name="birthday_in_days">تولد %1$d روز دیگر</string>
+    <string name="birthday_in_day">تولد %1$d روز دیگر</string>
+
+    // used in Choose Birthday Dialog
+    <string name="choose_birthday_title">انتخاب تاریخ تولد</string>
+    <string name="show_year">نمایش سال</string>
+    <string name="choose">انتخاب</string>
+    <string name="cancel">انصراف</string>
+    <string-array name="months">
+        <item>فروردین</item>
+        <item>اردیبهشت</item>
+        <item>خرداد</item>
+        <item>تیر</item>
+        <item>مرداد</item>
+        <item>شهریور</item>
+        <item>مهر</item>
+        <item>آبان</item>
+        <item>آذر</item>
+        <item>دی</item>
+        <item>بهمن</item>
+        <item>اسفند</item>
+    </string-array>
+
+    // used in Person Profile page
+    <string name="person_profile">پروفایل</string>
+    <string name="edit">ویرایش</string>
+    <string name="birthday_counter_template">ث : د : س - روز</string>
+    <string name="alarm">زنگ اعلان</string>
+    <string name="delete">حذف</string>
+
+    // default groups used in app
+    <string name="family">خانواده</string>
+    <string name="friends">دوستان</string>
+    <string name="work">کار</string>
+
+    // for notification
+    <string name="notification_title">تولد %1$s</string>
+    <string name="notification_description">فردا روز تولده. برای تولد %1$s آماده شو.</string>
+
+    // delete alert dialog
+    <string name="delete_title">حذف %1$s</string>
+    <string name="delete_message">آیا از حذف فرد مورد نظر مطمئنید؟</string>
+    <string name="delete_accept">بله</string>
+    <string name="delete_reject">خیر</string>
+</resources>

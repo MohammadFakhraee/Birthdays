@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/padding_large">
+
+    <TextView
+        android:id="@+id/titleTv"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/choose_birthday_title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <NumberPicker
+        android:id="@+id/yearNp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:theme="@style/NumberPicker"
+        app:layout_constraintEnd_toStartOf="@+id/monthNp"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleTv" />
+
+    <NumberPicker
+        android:id="@+id/monthNp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:theme="@style/NumberPicker"
+        app:layout_constraintEnd_toStartOf="@+id/dayNp"
+        app:layout_constraintStart_toEndOf="@+id/yearNp"
+        app:layout_constraintTop_toBottomOf="@+id/titleTv" />
+
+    <NumberPicker
+        android:id="@+id/dayNp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:theme="@style/NumberPicker"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/monthNp"
+        app:layout_constraintTop_toBottomOf="@+id/titleTv" />
+
+    <TextView
+        android:id="@+id/showYeaTv"
+        style="@style/TextMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/show_year"
+        app:layout_constraintStart_toStartOf="@+id/titleTv"
+        app:layout_constraintTop_toBottomOf="@+id/monthNp" />
+
+    <com.google.android.material.switchmaterial.SwitchMaterial
+        android:id="@+id/showYearSb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin"
+        android:checked="true"
+        app:layout_constraintBottom_toBottomOf="@+id/showYeaTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/showYeaTv" />
+
+    <Button
+        android:id="@+id/chooseBtn"
+        style="@style/DefBtn.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/choose"
+        app:layout_constraintBottom_toBottomOf="@+id/cancelTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/cancelTv" />
+
+    <TextView
+        android:id="@+id/cancelTv"
+        style="@style/TextMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:text="@string/cancel"
+        app:layout_constraintEnd_toStartOf="@+id/chooseBtn"
+        app:layout_constraintTop_toBottomOf="@+id/showYearSb" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

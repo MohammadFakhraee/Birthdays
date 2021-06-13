@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ffffff</color>
+    <color name="colorPrimaryDark">#e0e0e0</color>
+    <color name="colorAccent">#009e0f</color>
+    <color name="colorAccentDark">#008B0E</color>
+    <color name="colorAccentLight">#80CF87</color>
+
+    <color name="shimmer_effect_dark">#e0e0e0</color>
+    <color name="shimmer_effect_light">#EEEEEE</color>
+
+    <color name="group_blue_dark">#36008d</color>
+    <color name="group_blue_light">#00c9b8</color> // def color for family
+    <color name="group_green">#00916e</color>
+    <color name="group_yellow">#fcd200</color> // def color for friends
+    <color name="group_pink_light">#ffb3c1</color>
+    <color name="group_pink_dark">#fe5095</color>
+    <color name="group_red_light">#fe5e54</color>
+    <color name="group_red_dark">#d54022</color> // def color for work
+    <color name="group_brown">#85553a</color>
+
+    <color name="transparent_yellow">#99fcd200</color>
+
+    <color name="gray">#9E9E9E</color>
+    <color name="gray50">#FAFAFA</color>
+    <color name="gray100">#F5F5F5</color>
+    <color name="gray200">#EEEEEE</color>
+    <color name="gray300">#e0e0e0</color>
+    <color name="gray400">#BDBDBD</color>
+    <color name="gray500">#9E9E9E</color>
+    <color name="gray600">#757575</color>
+    <color name="gray700">#616161</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000</color>
+    <color name="red">#f44336</color>
+    <color name="pink">#E91E63</color>
+    <color name="purple">#9C27B0</color>
+    <color name="deepPurple">#673AB7</color>
+    <color name="ultra_light_purple">#BA68C8</color>
+    <color name="blue">#2196F3</color>
+    <color name="dark_blue">#1976D2</color>
+    <color name="ultra_light_blue">#81D4FA</color>
+    <color name="lightBlue">#03A9F4</color>
+    <color name="cyan">#00BCD4</color>
+    <color name="green">#4caf50</color>
+    <color name="lightGreen">#8BC34A</color>
+    <color name="lime">#CDDC39</color>
+    <color name="yellow">#FFEB3B</color>
+    <color name="amber">#FFC107</color>
+    <color name="orange">#FF9800</color>
+    <color name="deepOrange">#FF5722</color>
+</resources>

@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_nav"
+    app:startDestination="@id/splashFragment">
+
+    <fragment
+        android:id="@+id/personListFragment"
+        android:name="ir.mohammadhf.birthdays.feature.birthdays.BirthListFragment"
+        android:label="fragment_person_list"
+        tools:layout="@layout/fragment_birth_list">
+        <action
+            android:id="@+id/action_personListFragment_to_createPersonFragment"
+            app:destination="@id/createPersonFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
+        <action
+            android:id="@+id/action_personListFragment_to_personProfileFragment"
+            app:destination="@id/personProfileFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/createPersonFragment"
+        android:name="ir.mohammadhf.birthdays.feature.create.CreatePersonFragment"
+        android:label="fragment_create_person"
+        tools:layout="@layout/fragment_create_person">
+        <argument
+            android:name="personId"
+            android:defaultValue="0L"
+            app:argType="long" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="ir.mohammadhf.birthdays.feature.splash.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_personListFragment"
+            app:destination="@id/personListFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true" />
+    </fragment>
+    <fragment
+        android:id="@+id/personProfileFragment"
+        android:name="ir.mohammadhf.birthdays.feature.profile.PersonProfileFragment"
+        android:label="fragment_person_profile" >
+        <action
+            android:id="@+id/action_personProfileFragment_to_createPersonFragment"
+            app:destination="@id/createPersonFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
+        <argument
+            android:name="personId"
+            app:argType="long" />
+    </fragment>
+</navigation>

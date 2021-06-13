@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="GroupView">
+        <attr name="gv_radius" format="dimension" />
+        <attr name="gv_defColor" format="color" />
+        <attr name="gv_isSelected" format="boolean" />
+    </declare-styleable>
+</resources>
