@@ -5,9 +5,9 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import io.reactivex.subjects.BehaviorSubject
 import ir.mohammadhf.birthdays.R
 import ir.mohammadhf.birthdays.core.bases.BaseViewHolder
+import ir.mohammadhf.birthdays.data.BirthdaySelectEvent
 import ir.mohammadhf.birthdays.data.model.BirthdayMulti
 import ir.mohammadhf.birthdays.data.model.BirthdayMulti.TYPES.TYPE_PERSON
 import ir.mohammadhf.birthdays.data.model.BirthdayMulti.TYPES.TYPE_TITLE
@@ -16,13 +16,13 @@ import ir.mohammadhf.birthdays.data.model.BirthdayTitle
 import ir.mohammadhf.birthdays.databinding.ItemDateTitleBinding
 import ir.mohammadhf.birthdays.databinding.ItemPersonBirthdayBinding
 import ir.mohammadhf.birthdays.utils.ImageLoader
+import org.greenrobot.eventbus.EventBus
+import javax.inject.Inject
 
-class BirthdayListAdapter :
+class BirthdayListAdapter @Inject constructor(
+    private val imageLoader: ImageLoader
+) :
     ListAdapter<BirthdayMulti, RecyclerView.ViewHolder>(MultiViewDifUtil()) {
-
-    val selectedPersonBehaveSub = BehaviorSubject.create<BirthdayPerson>()
-
-    val imageLoader = ImageLoader()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         if (viewType == TYPE_TITLE)
@@ -99,7 +99,7 @@ class BirthdayListAdapter :
                     }
 
                 root.setOnClickListener {
-                    selectedPersonBehaveSub.onNext(item)
+                    EventBus.getDefault().post(BirthdaySelectEvent(item.id))
                 }
             }
         }

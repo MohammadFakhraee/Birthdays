@@ -14,19 +14,17 @@ android {
             keyPassword 'madHF1021'
         }
     }
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion "29.0.2"
 
     defaultConfig {
         applicationId "ir.mohammadhf.birthdays"
         minSdkVersion 19
-        targetSdkVersion 29
-        versionCode 2
-        versionName "1.0"
+        targetSdkVersion 30
+        versionCode 3
+        versionName "2.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
-
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
     buildTypes {
@@ -34,6 +32,10 @@ android {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
             signingConfig signingConfigs.MainSign
+        }
+        debug {
+            debuggable true
+            applicationIdSuffix = ".debug"
         }
     }
 
@@ -43,6 +45,14 @@ android {
 
     kotlinOptions {
         jvmTarget = '1.8'
+    }
+
+    compileOptions {
+        // Flag to enable support for the new language APIs
+        coreLibraryDesugaringEnabled true
+        // Sets Java compatibility to Java 8
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     flavorDimensions "region"
@@ -70,27 +80,24 @@ dependencies {
     implementation 'androidx.core:core-ktx:1.3.2'
     implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
     implementation 'com.google.android.material:material:1.2.1'
-
+    // Core Library Desugaring
+    coreLibraryDesugaring 'com.android.tools:desugar_jdk_libs:1.0.9'
     // Navigation component
     implementation "androidx.navigation:navigation-fragment-ktx:$versions.nav"
     implementation "androidx.navigation:navigation-ui-ktx:$versions.nav"
-
     // Hilt dependencies
     implementation "com.google.dagger:hilt-android:$versions.hilt"
     kapt "com.google.dagger:hilt-android-compiler:$versions.hilt"
     implementation "androidx.hilt:hilt-lifecycle-viewmodel:$versions.hilt_viewmodel"
     kapt "androidx.hilt:hilt-compiler:$versions.hilt_viewmodel"
-
     // RxJava2 library
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'
-    implementation 'io.reactivex.rxjava2:rxjava:2.2.9'
-
+    implementation 'io.reactivex.rxjava2:rxjava:2.2.21'
     // Room library
     implementation "androidx.room:room-runtime:$versions.room"
     kapt "androidx.room:room-compiler:$versions.room"
     // supporting RxJava2   -change to support RxJava3 when available
     implementation "androidx.room:room-rxjava2:$versions.room"
-
     // utils used in app
     implementation 'com.airbnb.android:lottie:3.4.0'
     implementation 'com.facebook.shimmer:shimmer:0.5.0'
@@ -98,4 +105,6 @@ dependencies {
     implementation 'com.github.bumptech.glide:glide:4.11.0'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.11.0'
     implementation 'com.isseiaoki:simplecropview:1.1.8'
+    implementation 'org.greenrobot:eventbus:3.2.0'
+    implementation "com.github.skydoves:colorpickerview:2.2.3"
 }

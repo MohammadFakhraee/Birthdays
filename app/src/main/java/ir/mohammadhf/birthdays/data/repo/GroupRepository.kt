@@ -14,4 +14,13 @@ class GroupRepository @Inject constructor(private val groupDao: GroupDao) {
 
     fun saveGroups(groups: Array<Group>): Completable =
         groupDao.insertAll(groups[0], groups[1], groups[2])
+
+    fun insertOneGroup(group: Group): Single<Long> =
+        groupDao.insertOne(group)
+
+    fun updateGroup(group: Group): Completable =
+        groupDao.update(group)
+
+    fun deleteGroup(group: Group): Completable =
+        groupDao.delete(group)
 }

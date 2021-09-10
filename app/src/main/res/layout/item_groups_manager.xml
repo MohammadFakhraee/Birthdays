@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center_vertical"
+    android:gravity="center_vertical"
+    android:orientation="horizontal">
+
+    <ir.mohammadhf.birthdays.views.GroupView
+        android:id="@+id/groupView"
+        style="@style/GroupView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        app:gv_defColor="@color/group_green"
+        app:gv_isSelected="true"
+        app:gv_radius="@dimen/group_radius"
+        tools:text="Family" />
+
+    <ImageButton
+        android:id="@+id/deleteIb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/content_desc_remove"
+        app:srcCompat="@drawable/ic_outline_remove_circle_24" />
+</LinearLayout>

@@ -1,6 +1,8 @@
 package ir.mohammadhf.birthdays.feature.birthdays
 
+import android.os.Bundle
 import android.view.LayoutInflater
+import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
@@ -14,16 +16,25 @@ import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.android.schedulers.AndroidSchedulers
 import ir.mohammadhf.birthdays.R
 import ir.mohammadhf.birthdays.core.bases.BaseFragment
+import ir.mohammadhf.birthdays.data.BirthdaySelectEvent
+import ir.mohammadhf.birthdays.data.GroupListSelectEvent
 import ir.mohammadhf.birthdays.databinding.FragmentBirthListBinding
 import ir.mohammadhf.birthdays.feature.birthdays.adapters.BirthGroupsAdapter
 import ir.mohammadhf.birthdays.feature.birthdays.adapters.BirthdayListAdapter
+import org.greenrobot.eventbus.EventBus
+import org.greenrobot.eventbus.Subscribe
+import org.greenrobot.eventbus.ThreadMode
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class BirthListFragment : BaseFragment<FragmentBirthListBinding>() {
     private val birthListViewModel: BirthListViewModel by viewModels()
 
-    private lateinit var birthAdapter: BirthdayListAdapter
-    private lateinit var groupsAdapter: BirthGroupsAdapter
+    @Inject
+    lateinit var birthAdapter: BirthdayListAdapter
+
+    @Inject
+    lateinit var groupsAdapter: BirthGroupsAdapter
 
     override fun onCreateBinding(
         inflater: LayoutInflater,
@@ -35,9 +46,6 @@ class BirthListFragment : BaseFragment<FragmentBirthListBinding>() {
         getPersonsWithFilter(ArrayList())
         birthListViewModel.getGroupList()
 
-        birthAdapter = BirthdayListAdapter()
-        groupsAdapter = BirthGroupsAdapter()
-
         requireBinding {
             birthdaysRv.adapter = birthAdapter
             groupsRv.adapter = groupsAdapter
@@ -48,13 +56,19 @@ class BirthListFragment : BaseFragment<FragmentBirthListBinding>() {
                 )
             }
 
-            filterIv.setOnClickListener {
+            filterIb.setOnClickListener {
                 val bool = !groupsRv.isVisible
                 groupsRv.isVisible = bool
 
-                filterIv.setImageResource(
-                    if (bool) R.drawable.ic_filter_fill_32
-                    else R.drawable.ic_filter_empty_32
+                filterIb.setImageResource(
+                    if (bool) R.drawable.ic_baseline_filter_32
+                    else R.drawable.ic_outline_filter_32
+                )
+            }
+
+            settingIb.setOnClickListener {
+                findNavController().navigate(
+                    BirthListFragmentDirections.actionGlobalToSetting()
                 )
             }
         }
@@ -80,14 +94,14 @@ class BirthListFragment : BaseFragment<FragmentBirthListBinding>() {
                                 Animation.RELATIVE_TO_SELF, -0.5f,
                                 Animation.RELATIVE_TO_SELF, 0f
                             )
-                            animation.duration = 300
+                            animation.duration = 400
                             animation.repeatMode = Animation.REVERSE
                             animation.repeatCount =
-                                if (arrowDownIv.isVisible) Animation.INFINITE
+                                if (bool) Animation.INFINITE
                                 else 0
                             animation.interpolator = LinearInterpolator()
                             arrowDownIv.startAnimation(animation)
-                        }
+                        } else arrowDownIv.clearAnimation()
                     }
                 }
         )
@@ -109,24 +123,38 @@ class BirthListFragment : BaseFragment<FragmentBirthListBinding>() {
                     }
                 }
         )
-
-        compositeDisposable.add(
-            birthAdapter.selectedPersonBehaveSub
-                .subscribe {
-                    findNavController().navigate(
-                        BirthListFragmentDirections
-                            .actionPersonListFragmentToPersonProfileFragment(it.id)
-                    )
-                }
-        )
-
-        compositeDisposable.add(
-            groupsAdapter.groupSelectedBehaveSub
-                .subscribe { getPersonsWithFilter(it) }
-        )
     }
 
     private fun getPersonsWithFilter(filterID: ArrayList<Long>) {
         birthListViewModel.getPersonList(filterID)
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onBirthdaySelectEvent(birthdaySelectEvent: BirthdaySelectEvent) {
+        findNavController().navigate(
+            BirthListFragmentDirections
+                .actionPersonListFragmentToPersonProfileFragment(birthdaySelectEvent.id)
+        )
+    }
+
+    @Subscribe(threadMode = ThreadMode.MAIN)
+    fun onGroupListSelectEvent(groupListSelectEvent: GroupListSelectEvent) {
+        getPersonsWithFilter(groupListSelectEvent.groups)
+    }
+
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View? {
+        EventBus.getDefault().register(this)
+        return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun isBottomNavShown(): Boolean = true
+
+    override fun onDestroyView() {
+        EventBus.getDefault().unregister(this)
+        super.onDestroyView()
     }
 }

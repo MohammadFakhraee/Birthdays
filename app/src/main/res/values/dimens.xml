@@ -1,17 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="app_radius">16dp</dimen>
+    <dimen name="group_radius">16dp</dimen>
 
-    <dimen name="line_width">1dp</dimen>
+    <dimen name="calendar_day_radius">8dp</dimen>
+    <dimen name="calendar_day_width">36dp</dimen>
+    <dimen name="calendar_day_stroke_width">1.5dp</dimen>
+    <dimen name="calendar_day_elevation">4dp</dimen>
+
+    <dimen name="line_width">0.5dp</dimen>
 
     <dimen name="card_view_radius">0dp</dimen>
     <dimen name="card_view_elevation">12dp</dimen>
 
     <dimen name="padding">8dp</dimen>
     <dimen name="padding_large">16dp</dimen>
+    <dimen name="padding_small">4dp</dimen>
 
     <dimen name="margin">8dp</dimen>
     <dimen name="margin_large">32dp</dimen>
+    <dimen name="margin_small">4dp</dimen>
 
     <dimen name="btn_text_size">18dp</dimen>
 

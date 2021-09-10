@@ -2,12 +2,12 @@ package ir.mohammadhf.birthdays.utils
 
 import android.text.format.DateFormat
 import ir.mohammadhf.birthdays.BuildConfig
-import ir.mohammadhf.birthdays.data.model.Person
 import java.text.SimpleDateFormat
+import java.time.DayOfWeek
+import java.time.LocalDate
 import java.util.*
 import javax.inject.Inject
 import javax.inject.Singleton
-import kotlin.math.floor
 
 @Singleton
 class DateManager @Inject constructor() {
@@ -98,52 +98,58 @@ class DateManager @Inject constructor() {
     }
 
     fun dayOfWeekFromSolar(jY: Int, jM: Int, jD: Int): Array<String> {
-        val jDaysPerMonth =
-            intArrayOf(31, 31, 31, 31, 31, 31, 30, 30, 30, 30, 30, 29)
-        var numberOfDays = 0
-        for (i in 0 until jM - 1) numberOfDays += jDaysPerMonth[i]
-        numberOfDays += jD
-        var provider =
-            floor(((jY - 1) * 365.2422 + numberOfDays - 119) / 7).toInt()
-        provider =
-            floor((((jY - 1) * 365.2422 + numberOfDays - 119) / 7 - provider) * 7).toInt()
-        val out = arrayOf<String>("", "")
-        return when (provider) {
-            0 -> {
-                out[0] = "پنجشنبه"
-                out[1] = "Thursday"
-                out
-            }
+        val out = arrayOf("", "")
+        return when (indexDayOfWeekFromSolar(jY, jM, jD)) {
             1 -> {
-                out[0] = "جمعه"
-                out[1] = "Friday"
-                out
-            }
-            2 -> {
                 out[0] = "شنبه"
                 out[1] = "Saturday"
                 out
             }
-            3 -> {
+            2 -> {
                 out[0] = "یکشنبه"
                 out[1] = "Sunday"
                 out
             }
-            4 -> {
+            3 -> {
                 out[0] = "دوشنبه"
                 out[1] = "Monday"
                 out
             }
-            5 -> {
+            4 -> {
                 out[0] = "سه شنبه"
                 out[1] = "Tuesday"
                 out
             }
-            else -> {
+            5 -> {
                 out[0] = "چهارشنبه"
                 out[1] = "Wednesday"
                 out
+
             }
+            6 -> {
+                out[0] = "پنجشنبه"
+                out[1] = "Thursday"
+                out
+            }
+            else -> {
+                out[0] = "جمعه"
+                out[1] = "Friday"
+                out
+            }
+        }
+    }
+
+    private fun indexDayOfWeekFromGregorian(gY: Int, gM: Int, gD: Int): Int {
+        val localDate = LocalDate.of(gY, gM, gD)
+        return DayOfWeek.from(localDate).value
+    }
+
+    fun indexDayOfWeekFromSolar(jY: Int, jM: Int, jD: Int): Int {
+        val gregorian = jalali_to_gregorian(jY, jM, jD)
+        return when (val index =
+            indexDayOfWeekFromGregorian(gregorian[0], gregorian[1], gregorian[2])) {
+            in 1..5 -> index.plus(2)
+            else -> index % 5
         }
     }
 
@@ -241,6 +247,7 @@ class DateManager @Inject constructor() {
         return todayDateStr!!
     }
 
+
     fun getCurrentTime(): ArrayList<Int> {
         val intArray = ArrayList<Int>()
         var s = DateFormat.format("HH:mm:ss", Date().time).toString()
@@ -260,23 +267,16 @@ class DateManager @Inject constructor() {
         return intArray
     }
 
-    fun getDateTimeMillis(date: String): Long =
-        SimpleDateFormat("yyyy/MM/dd", Locale.getDefault()).parse(date)?.time ?: 1
-
-
-    fun getTodayTimeMillis(): Long =
-        Calendar.getInstance().timeInMillis
-
     fun daysLeft(month: Int, day: Int): Int {
-        val personDaysPast = daysPastSinceFirstDayOfYear(month, day)
+        val personDaysPast = daysPastSinceFirstDayOfYear(getTodayDateArray()[0], month, day)
         val todayDaysPast = todayDaysPastSinceFirstDayOfYear()
 
         return if (todayDaysPast > personDaysPast) 356 - (todayDaysPast - personDaysPast)
         else personDaysPast - todayDaysPast
     }
 
-    fun daysPastSinceFirstDayOfYear(month: Int, day: Int): Int {
-        val monthlyDays = DateDataGenerator.getMonthlyDays()
+    fun daysPastSinceFirstDayOfYear(year: Int, month: Int, day: Int): Int {
+        val monthlyDays = DateDataGenerator.getMonthlyDays(year)
 
         var daysPast = day
         for (i in 0 until month - 1) {
@@ -287,5 +287,10 @@ class DateManager @Inject constructor() {
     }
 
     fun todayDaysPastSinceFirstDayOfYear(): Int =
-        daysPastSinceFirstDayOfYear(getTodayDateArray()[1], getTodayDateArray()[2])
+        daysPastSinceFirstDayOfYear(
+            getTodayDateArray()[0],
+            getTodayDateArray()[1],
+            getTodayDateArray()[2]
+        )
 }
+

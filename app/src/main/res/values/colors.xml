@@ -6,6 +6,8 @@
     <color name="colorAccentDark">#008B0E</color>
     <color name="colorAccentLight">#80CF87</color>
 
+    <color name="lineColor">@color/gray400</color>
+
     <color name="shimmer_effect_dark">#e0e0e0</color>
     <color name="shimmer_effect_light">#EEEEEE</color>
 

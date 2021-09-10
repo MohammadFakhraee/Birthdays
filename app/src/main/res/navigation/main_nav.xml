@@ -39,7 +39,7 @@
         android:id="@+id/splashFragment"
         android:name="ir.mohammadhf.birthdays.feature.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
+        tools:layout="@layout/fragment_splash">
         <action
             android:id="@+id/action_splashFragment_to_personListFragment"
             app:destination="@id/personListFragment"
@@ -51,7 +51,7 @@
     <fragment
         android:id="@+id/personProfileFragment"
         android:name="ir.mohammadhf.birthdays.feature.profile.PersonProfileFragment"
-        android:label="fragment_person_profile" >
+        android:label="fragment_person_profile">
         <action
             android:id="@+id/action_personProfileFragment_to_createPersonFragment"
             app:destination="@id/createPersonFragment"
@@ -63,4 +63,14 @@
             android:name="personId"
             app:argType="long" />
     </fragment>
+
+    <action
+        android:id="@+id/action_global_to_setting"
+        app:destination="@id/setting"
+        app:enterAnim="@anim/nav_enter"
+        app:exitAnim="@anim/nav_exit"
+        app:popEnterAnim="@anim/nav_pop_enter"
+        app:popExitAnim="@anim/nav_pop_exit" />
+
+    <include app:graph="@navigation/setting" />
 </navigation>

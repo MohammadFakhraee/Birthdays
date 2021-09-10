@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.viewbinding.ViewBinding
 import io.reactivex.disposables.CompositeDisposable
+import ir.mohammadhf.birthdays.MainActivity
 import ir.mohammadhf.birthdays.core.ViewBindingHandler
 import ir.mohammadhf.birthdays.core.ViewBindingHandlerImpl
 
@@ -23,9 +24,14 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(),
             onCreateBinding(inflater, container), this
         ) {
             initial()
-
             subscribe()
         }
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        if (activity is MainActivity)
+            (activity as MainActivity).changeBottomNavVisibility(isBottomNavShown())
     }
 
     abstract fun onCreateBinding(inflater: LayoutInflater, container: ViewGroup?): T
@@ -33,6 +39,8 @@ abstract class BaseFragment<T : ViewBinding> : Fragment(),
     abstract fun initial()
 
     abstract fun subscribe()
+
+    abstract fun isBottomNavShown(): Boolean
 
     override fun onDestroyView() {
         super.onDestroyView()

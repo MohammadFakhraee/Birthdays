@@ -18,21 +18,35 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/filterIv"
+        <ImageButton
+            android:id="@+id/filterIb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/margin"
             android:background="@android:color/transparent"
-            android:contentDescription="@string/content_description_back_to_main_page"
-            app:srcCompat="@drawable/ic_filter_empty_32" />
+            android:contentDescription="@string/content_desc_filter"
+            app:srcCompat="@drawable/ic_outline_filter_32" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1" />
+
+        <ImageButton
+            android:id="@+id/settingIb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="@dimen/margin"
+            android:background="@android:color/transparent"
+            android:contentDescription="@string/content_desc_setting"
+            app:srcCompat="@drawable/ic_baseline_settings_32" />
     </LinearLayout>
 
     <View
         android:id="@+id/view"
         android:layout_width="0dp"
         android:layout_height="@dimen/line_width"
-        android:background="@color/gray400"
+        android:background="@color/lineColor"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/linearLayout" />
@@ -48,7 +62,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/view"
-        tools:itemCount="4"
+        tools:itemCount="2"
         tools:listitem="@layout/item_group" />
 
     <androidx.recyclerview.widget.RecyclerView
@@ -70,8 +84,8 @@
         android:id="@+id/emptyStateLl"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:gravity="center"
         android:layout_margin="@dimen/margin_large"
+        android:gravity="center"
         android:orientation="vertical"
         android:visibility="gone"
         app:layout_constraintBottom_toTopOf="@id/addFab"
@@ -98,10 +112,11 @@
         android:id="@+id/addFab"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="@dimen/margin_large"
+        android:layout_margin="@dimen/margin"
+        android:contentDescription="@string/content_desc_add_birthday"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:srcCompat="@drawable/ic_add_32" />
+        app:srcCompat="@drawable/ic_baseline_add_32" />
 
     <ImageView
         android:id="@+id/arrowDownIv"
@@ -111,7 +126,7 @@
         app:layout_constraintBottom_toTopOf="@+id/addFab"
         app:layout_constraintEnd_toEndOf="@+id/addFab"
         app:layout_constraintStart_toStartOf="@+id/addFab"
-        app:srcCompat="@drawable/ic_arrow_down_32" />
+        app:srcCompat="@drawable/ic_baseline_arrow_down_32" />
 
     <com.facebook.shimmer.ShimmerFrameLayout
         android:id="@+id/shimmerFl"

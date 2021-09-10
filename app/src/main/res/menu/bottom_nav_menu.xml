@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/main_nav"
+        android:icon="@drawable/ic_baseline_cake_24"
+        android:title="@string/bott_nav_birthday" />
+
+    <item
+        android:id="@+id/calendar_nav"
+        android:icon="@drawable/ic_baseline_calendar_today_24"
+        android:title="@string/bott_nav_calendar" />
+
+    <item
+        android:id="@+id/gift_nav"
+        android:icon="@drawable/ic_baseline_gift_24"
+        android:title="@string/bott_nav_gift" />
+</menu>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/monthAndYearTv"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin_large"
+        android:layout_marginTop="@dimen/margin"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="September 2021" />
+
+    <ImageButton
+        android:id="@+id/nextMonthIb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/content_desc_next_month"
+        app:layout_constraintBottom_toBottomOf="@id/monthAndYearTv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@id/monthAndYearTv"
+        app:srcCompat="@drawable/ic_baseline_arrow_right_24" />
+
+    <ImageButton
+        android:id="@+id/prevMonthIb"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:background="@android:color/transparent"
+        android:contentDescription="@string/content_desc_prev_month"
+        app:layout_constraintBottom_toBottomOf="@+id/nextMonthIb"
+        app:layout_constraintEnd_toStartOf="@+id/nextMonthIb"
+        app:layout_constraintTop_toTopOf="@+id/nextMonthIb"
+        app:srcCompat="@drawable/ic_baseline_arrow_left_24" />
+
+    <TextView
+        android:id="@+id/firstDay"
+        style="@style/TextWeekTitle"
+        android:layout_width="@dimen/calendar_day_width"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:text="@string/first_day"
+        app:layout_constraintEnd_toStartOf="@+id/secondDay"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/monthAndYearTv" />
+
+    <TextView
+        android:id="@+id/secondDay"
+        style="@style/TextWeekTitle"
+        android:layout_width="@dimen/calendar_day_width"
+        android:layout_height="wrap_content"
+        android:text="@string/second_day"
+        app:layout_constraintEnd_toStartOf="@+id/thirdDay"
+        app:layout_constraintStart_toEndOf="@+id/firstDay"
+        app:layout_constraintTop_toTopOf="@+id/firstDay" />
+
+    <TextView
+        android:id="@+id/thirdDay"
+        style="@style/TextWeekTitle"
+        android:layout_width="@dimen/calendar_day_width"
+        android:layout_height="wrap_content"
+        android:text="@string/third_day"
+        app:layout_constraintEnd_toStartOf="@+id/forthDay"
+        app:layout_constraintStart_toEndOf="@+id/secondDay"
+        app:layout_constraintTop_toTopOf="@+id/secondDay" />
+
+    <TextView
+        android:id="@+id/forthDay"
+        style="@style/TextWeekTitle"
+        android:layout_width="@dimen/calendar_day_width"
+        android:layout_height="wrap_content"
+        android:text="@string/forth_day"
+        app:layout_constraintEnd_toStartOf="@+id/fifthDay"
+        app:layout_constraintStart_toEndOf="@+id/thirdDay"
+        app:layout_constraintTop_toTopOf="@+id/thirdDay" />
+
+    <TextView
+        android:id="@+id/fifthDay"
+        style="@style/TextWeekTitle"
+        android:layout_width="@dimen/calendar_day_width"
+        android:layout_height="wrap_content"
+        android:text="@string/fifth_day"
+        app:layout_constraintEnd_toStartOf="@+id/sixthDay"
+        app:layout_constraintStart_toEndOf="@+id/forthDay"
+        app:layout_constraintTop_toTopOf="@+id/forthDay" />
+
+    <TextView
+        android:id="@+id/sixthDay"
+        style="@style/TextWeekTitle"
+        android:layout_width="@dimen/calendar_day_width"
+        android:layout_height="wrap_content"
+        android:text="@string/sixth_day"
+        app:layout_constraintEnd_toStartOf="@+id/seventhDay"
+        app:layout_constraintStart_toEndOf="@+id/fifthDay"
+        app:layout_constraintTop_toTopOf="@+id/fifthDay" />
+
+    <TextView
+        android:id="@+id/seventhDay"
+        style="@style/TextWeekTitle"
+        android:layout_width="@dimen/calendar_day_width"
+        android:layout_height="wrap_content"
+        android:text="@string/seventh_day"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/sixthDay"
+        app:layout_constraintTop_toTopOf="@+id/sixthDay" />
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/line_width"
+        android:layout_marginTop="@dimen/margin"
+        android:background="@color/lineColor"
+        app:layout_constraintEnd_toEndOf="@id/seventhDay"
+        app:layout_constraintStart_toStartOf="@id/firstDay"
+        app:layout_constraintTop_toBottomOf="@id/firstDay" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/monthlyRv"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/view2"
+        app:spanCount="7"
+        tools:itemCount="35"
+        tools:listitem="@layout/item_calendar_day" />
+
+    <LinearLayout
+        android:id="@+id/emptyStateLl"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_margin="@dimen/margin_large"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/monthlyRv">
+
+        <com.airbnb.lottie.LottieAnimationView
+            android:layout_width="300dp"
+            android:layout_height="250dp"
+            app:lottie_autoPlay="true"
+            app:lottie_loop="true"
+            app:lottie_rawRes="@raw/lottie_empty_box" />
+
+        <TextView
+            style="@style/TextTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/no_birthday_in_selected_date" />
+    </LinearLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/birthListRv"
+        style="@style/RecyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/monthlyRv"
+        tools:itemCount="3"
+        tools:listitem="@layout/item_person_birthday" />
+</androidx.constraintlayout.widget.ConstraintLayout>

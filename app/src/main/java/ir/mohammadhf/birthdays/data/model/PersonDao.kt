@@ -22,4 +22,7 @@ interface PersonDao {
 
     @Query("SELECT * FROM persons WHERE id = :personId")
     fun getById(personId: Long): Single<Person>
+
+    @Query("SELECT * FROM persons WHERE birthdayMonth == :month AND birthdayDay == :day")
+    fun getByBirthdate(month: Int, day: Int): Single<List<Person>>
 }

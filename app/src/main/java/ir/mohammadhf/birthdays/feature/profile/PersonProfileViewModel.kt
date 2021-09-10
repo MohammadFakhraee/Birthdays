@@ -8,7 +8,7 @@ import io.reactivex.subjects.BehaviorSubject
 import ir.mohammadhf.birthdays.core.bases.BaseViewModel
 import ir.mohammadhf.birthdays.data.model.Group
 import ir.mohammadhf.birthdays.data.model.Person
-import ir.mohammadhf.birthdays.data.model.TimeCounter
+import ir.mohammadhf.birthdays.data.model.TimerHolder
 import ir.mohammadhf.birthdays.data.repo.GroupRepository
 import ir.mohammadhf.birthdays.data.repo.PersonRepository
 import ir.mohammadhf.birthdays.utils.DateManager
@@ -34,7 +34,12 @@ class PersonProfileViewModel @ViewModelInject constructor(
                 person?.let {
                     personBehaveSub.onNext(it)
                     getGroup(it.groupId)
-                    countDays(dateManager.daysLeft(it.birthdayMonth, it.birthdayDay))
+                    countDays(
+                        dateManager.daysLeft(
+                            it.birthdayMonth,
+                            it.birthdayDay
+                        )
+                    )
                 }
             })
     }
@@ -57,14 +62,14 @@ class PersonProfileViewModel @ViewModelInject constructor(
         timer?.cancel()
 
         if (daysLeft >= 0) {
-            val timeCounter = TimeCounter(daysLeft - 1, 0, 0, 0)
+            val timeCounter = TimerHolder(daysLeft - 1, 0, 0, 0)
             setTimesLeft(timeCounter)
 
             timer = Timer()
             timer?.schedule(object : TimerTask() {
                 override fun run() {
                     timeCounter.decrease()
-                    if (timeCounter.daysLeft >= 0)
+                    if (timeCounter.days >= 0)
                         counterBehaveSub.onNext(timeCounter.toString())
                     else {
                         onBirthdayBehaveSub.onNext(true)
@@ -77,10 +82,10 @@ class PersonProfileViewModel @ViewModelInject constructor(
         } else onBirthdayBehaveSub.onNext(true)
     }
 
-    private fun setTimesLeft(timeCounter: TimeCounter) {
+    private fun setTimesLeft(timerHolder: TimerHolder) {
         val currentTime = dateManager.getCurrentTime()
         if (currentTime[2] > 0) {
-            timeCounter.seconds = 60 - currentTime[2]
+            timerHolder.seconds = 60 - currentTime[2]
             currentTime[1]++
             if (currentTime[1] == 60) {
                 currentTime[1] = 0
@@ -88,10 +93,10 @@ class PersonProfileViewModel @ViewModelInject constructor(
             }
         }
         if (currentTime[1] > 0) {
-            timeCounter.minutes = 60 - currentTime[1]
+            timerHolder.minutes = 60 - currentTime[1]
             currentTime[0]++
         }
-        timeCounter.hours = 24 - currentTime[0]
+        timerHolder.hours = 24 - currentTime[0]
     }
 
     override fun onCleared() {

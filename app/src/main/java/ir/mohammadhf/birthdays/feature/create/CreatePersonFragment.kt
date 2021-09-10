@@ -20,7 +20,8 @@ import ir.mohammadhf.birthdays.R
 import ir.mohammadhf.birthdays.core.bases.BaseFragment
 import ir.mohammadhf.birthdays.databinding.FragmentCreatePersonBinding
 import ir.mohammadhf.birthdays.feature.create.adapters.AvatarListAdapter
-import ir.mohammadhf.birthdays.feature.create.adapters.GroupListAdapter
+import ir.mohammadhf.birthdays.feature.create.adapters.CreatePersonGroupAdapter
+import ir.mohammadhf.birthdays.feature.setting.groups.CreateGroupDialog
 import ir.mohammadhf.birthdays.utils.DateManager
 import ir.mohammadhf.birthdays.utils.ImageLoader
 import java.io.File
@@ -31,7 +32,7 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
     private val createPersonViewModel: CreatePersonViewModel by viewModels()
 
     lateinit var avatarListAdapter: AvatarListAdapter
-    lateinit var groupListAdapter: GroupListAdapter
+    lateinit var createPersonGroupAdapter: CreatePersonGroupAdapter
 
     @Inject
     lateinit var imageLoader: ImageLoader
@@ -56,7 +57,7 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
         createPersonViewModel.getAvatars()
 
         avatarListAdapter = AvatarListAdapter()
-        groupListAdapter = GroupListAdapter()
+        createPersonGroupAdapter = CreatePersonGroupAdapter()
 
         requireBinding {
             backBtn.setOnClickListener {
@@ -65,7 +66,7 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
 
             avatarsRv.adapter = avatarListAdapter
 
-            groupListRv.adapter = groupListAdapter
+            groupListRv.adapter = createPersonGroupAdapter
 
             personNameEt.addTextChangedListener {
                 if (!isFirstLoading)
@@ -74,10 +75,21 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
 
             chooseBirthdayTv.setOnClickListener {
                 val bottomSheet = ChooseBirthdayDialog()
-                bottomSheet.show(childFragmentManager, "BOTTOM_SHEET")
+                bottomSheet.show(childFragmentManager, "CHOOSE_BIRTH_BOTTOM_SHEET")
 
                 bottomSheet.selectedDateBehaveSub.subscribe {
                     createPersonViewModel.changeBirthday(it[2]!!, it[1]!!, it[0])
+                    bottomSheet.dismiss()
+                }
+            }
+
+            addGroupFab.setOnClickListener {
+                val bottomSheet = CreateGroupDialog()
+                bottomSheet.isCancelable = false
+                bottomSheet.show(childFragmentManager, "CREATE_GROUP_BOTTOM_SHEET")
+
+                bottomSheet.createdGroupBehaveSub.subscribe {
+                    createPersonViewModel.saveNewGroup(it)
                     bottomSheet.dismiss()
                 }
             }
@@ -129,7 +141,7 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
                                     requireContext(), it.avatarPath, selectedIv
                                 )
 
-                            groupListAdapter.selectGroupById(it.groupId)
+                            createPersonGroupAdapter.selectGroupById(it.groupId)
 
                             createBtn.text =
                                 if (it.id > 0) getString(R.string.update)
@@ -156,7 +168,7 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
         compositeDisposable.add(
             createPersonViewModel.groupListBehaveSub
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe { groupListAdapter.submitList(it) }
+                .subscribe { createPersonGroupAdapter.submitList(it) }
         )
 
         compositeDisposable.add(
@@ -192,7 +204,7 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
         )
 
         compositeDisposable.add(
-            groupListAdapter.selectedGroupBehaveSub
+            createPersonGroupAdapter.selectedGroupBehaveSub
                 .subscribe { createPersonViewModel.changeGroup(it) }
         )
 
@@ -243,6 +255,8 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
             createPersonViewModel.changeFormComplete()
         }
     }
+
+    override fun isBottomNavShown(): Boolean = true
 
     companion object {
         const val IMAGE_REQUEST_CODE = 2001

@@ -20,10 +20,10 @@
             </intent-filter>
         </activity>
 
-        <receiver android:name=".feature.receiver.AlarmReceiver" />
+        <receiver android:name=".feature.notify.AlarmReceiver" />
         <receiver
-            android:name=".feature.receiver.RebootReceiver"
-            android:enabled="false">
+            android:name=".feature.notify.RebootReceiver"
+            android:enabled="true">
             <intent-filter>
                 <action android:name="android.intent.action.BOOT_COMPLETED" />
             </intent-filter>

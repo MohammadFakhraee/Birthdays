@@ -2,6 +2,7 @@ package ir.mohammadhf.birthdays.feature.splash
 
 import androidx.hilt.lifecycle.ViewModelInject
 import io.reactivex.Completable
+import io.reactivex.subjects.BehaviorSubject
 import ir.mohammadhf.birthdays.core.InitialSharedPreferences
 import ir.mohammadhf.birthdays.core.bases.BaseViewModel
 import ir.mohammadhf.birthdays.data.model.Group
@@ -11,6 +12,8 @@ class SplashViewModel @ViewModelInject constructor(
     private val groupRepository: GroupRepository,
     private val initialSharedPreferences: InitialSharedPreferences
 ) : BaseViewModel() {
+
+    val onSettingAlarmBehaveSub = BehaviorSubject.create<Boolean>()
 
     fun saveGroups(groups: Array<Group>): Completable =
         if (!initialSharedPreferences.isGroupSaved())
@@ -26,6 +29,13 @@ class SplashViewModel @ViewModelInject constructor(
                     it.onComplete()
                 }
             }
+
+    fun settingAlarm() {
+        if (!initialSharedPreferences.isAlarmSet()) {
+            onSettingAlarmBehaveSub.onNext(true)
+            initialSharedPreferences.setAlarmSet(true)
+        }
+    }
 
     /**
      * Simulate Loading page

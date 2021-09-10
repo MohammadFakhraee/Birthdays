@@ -7,7 +7,5 @@
     android:layout_height="wrap_content"
     android:layout_gravity="center"
     app:gv_defColor="@color/group_green"
-    app:gv_radius="@dimen/app_radius"
-    tools:text="Friends">
-
-</ir.mohammadhf.birthdays.views.GroupView>
+    app:gv_radius="@dimen/group_radius"
+    tools:text="Friends" />

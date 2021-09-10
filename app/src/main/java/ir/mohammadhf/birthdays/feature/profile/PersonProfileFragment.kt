@@ -1,6 +1,7 @@
 package ir.mohammadhf.birthdays.feature.profile
 
 import android.app.AlertDialog
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.View.GONE
 import android.view.View.VISIBLE
@@ -117,8 +118,9 @@ class PersonProfileFragment : BaseFragment<FragmentPersonProfileBinding>() {
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     requireBinding {
-                        groupGv.setColor(it.color)
+                        groupGv.groupColor = it.color
                         groupGv.text = it.name
+                        groupGv.setTextColor(Color.WHITE)
                     }
                 }
         )
@@ -134,7 +136,7 @@ class PersonProfileFragment : BaseFragment<FragmentPersonProfileBinding>() {
         )
 
         compositeDisposable.add(
-            personProfileViewModel.onBirthdayBehaveSub
+            personProfileViewModel.onBirthdayBehaveSub.observeOn(AndroidSchedulers.mainThread())
                 .subscribe {
                     requireBinding {
                         if (it) {
@@ -148,4 +150,6 @@ class PersonProfileFragment : BaseFragment<FragmentPersonProfileBinding>() {
                 }
         )
     }
+
+    override fun isBottomNavShown(): Boolean = true
 }

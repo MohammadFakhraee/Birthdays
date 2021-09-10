@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:paddingBottom="@dimen/padding_large">
+
+    <TextView
+        android:id="@+id/title"
+        style="@style/TextTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin"
+        android:text="@string/adding_new_group"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.skydoves.colorpickerview.ColorPickerView
+        android:id="@+id/groupColorPicker"
+        android:layout_width="0dp"
+        android:layout_height="200dp"
+        android:layout_margin="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title" />
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/colorPrevCiv"
+        android:layout_width="@dimen/circle_image_medium"
+        android:layout_height="@dimen/circle_image_medium"
+        android:layout_margin="@dimen/margin"
+        android:src="@color/black"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupColorPicker" />
+
+    <EditText
+        android:id="@+id/groupNameEt"
+        style="@style/EditText"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/margin"
+        android:hint="@string/hint_group_name"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/colorPrevCiv" />
+
+    <Button
+        android:id="@+id/chooseBtn"
+        style="@style/DefBtn.Primary"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:enabled="false"
+        android:text="@string/choose"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/groupNameEt" />
+
+    <TextView
+        android:id="@+id/cancelTv"
+        style="@style/TextMain"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_large"
+        android:text="@string/cancel"
+        app:layout_constraintBottom_toBottomOf="@+id/chooseBtn"
+        app:layout_constraintEnd_toStartOf="@+id/chooseBtn"
+        app:layout_constraintTop_toTopOf="@+id/chooseBtn" />
+</androidx.constraintlayout.widget.ConstraintLayout>

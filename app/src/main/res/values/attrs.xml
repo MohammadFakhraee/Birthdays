@@ -4,5 +4,7 @@
         <attr name="gv_radius" format="dimension" />
         <attr name="gv_defColor" format="color" />
         <attr name="gv_isSelected" format="boolean" />
+        <attr name="gv_isGroupModeEnable" format="boolean" />
+        <attr name="gv_strokeWidth" format="dimension" />
     </declare-styleable>
 </resources>

@@ -6,14 +6,12 @@ import android.view.View
 import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.view.ViewGroup
-import android.widget.Toast
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.subjects.BehaviorSubject
 import ir.mohammadhf.birthdays.R
 import ir.mohammadhf.birthdays.databinding.DialogChooseBirthdayBinding
 import ir.mohammadhf.birthdays.utils.DateDataGenerator
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class ChooseBirthdayDialog : BottomSheetDialogFragment() {
@@ -27,7 +25,7 @@ class ChooseBirthdayDialog : BottomSheetDialogFragment() {
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = DialogChooseBirthdayBinding.inflate(
             inflater, container, false
         )

@@ -10,7 +10,6 @@
     <string name="group">گروه</string>
     <string name="create">ساخت</string>
     <string name="update">تغییر</string>
-    <string name="content_description_back_to_main_page">بازگشت به صفحه اصلی</string>
 
     // used in Birthday List page
     <string name="add_birthday_by_selecting_add_button">برای افزودن تولد جدید، روی دکمه افزودن کلیک کنید :)</string>
@@ -58,7 +57,42 @@
 
     // delete alert dialog
     <string name="delete_title">حذف %1$s</string>
-    <string name="delete_message">آیا از حذف فرد مورد نظر مطمئنید؟</string>
+    <string name="delete_message">آیا از حذف مطمئنید؟</string>
     <string name="delete_accept">بله</string>
     <string name="delete_reject">خیر</string>
+
+    // create group dialog
+    <string name="adding_new_group">افزودن گروه جدید</string>
+    <string name="hint_group_name">نام گروه</string>
+
+    // settings
+    <string name="settings">تنظیمات</string>
+    <string name="groups_managing">مدیریت گروه ها</string>
+
+    // calendar
+    // days of month abbreviation
+    <string name="first_day">ش</string>
+    <string name="second_day">ی</string>
+    <string name="third_day">د</string>
+    <string name="forth_day">س</string>
+    <string name="fifth_day">چ</string>
+    <string name="sixth_day">پ</string>
+    <string name="seventh_day">ج</string>
+    <string name="no_birthday_in_selected_date">در تاریخ انتخابی، تولدی وجود ندارد.</string>
+
+    // bottom nav strings
+    <string name="bott_nav_birthday">تولد</string>
+    <string name="bott_nav_calendar">تقویم</string>
+    <string name="bott_nav_gift">کادو</string>
+
+    // content descriptions
+    <string name="content_desc_back">بازگشت</string>
+    <string name="content_desc_managing_groups">مدیریت گروه ها</string>
+    <string name="content_desc_remove">حذف کردن</string>
+    <string name="content_desc_group_add">افزودن گروه جدید</string>
+    <string name="content_desc_filter">فیلتر کردن</string>
+    <string name="content_desc_setting">تنظیمات</string>
+    <string name="content_desc_next_month">ماه بعد</string>
+    <string name="content_desc_prev_month">ماه قبل</string>
+    <string name="content_desc_add_birthday">افزودن تولد جدید</string>
 </resources>

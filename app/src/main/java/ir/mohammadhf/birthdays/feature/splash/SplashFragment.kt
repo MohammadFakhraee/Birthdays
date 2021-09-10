@@ -10,18 +10,13 @@ import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import ir.mohammadhf.birthdays.R
 import ir.mohammadhf.birthdays.core.bases.BaseFragment
-import ir.mohammadhf.birthdays.core.InitialSharedPreferences
 import ir.mohammadhf.birthdays.data.model.Group
 import ir.mohammadhf.birthdays.databinding.FragmentSplashBinding
-import ir.mohammadhf.birthdays.feature.receiver.setTheAlarm
-import javax.inject.Inject
+import ir.mohammadhf.birthdays.feature.notify.setTheAlarm
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     private val splashViewModel: SplashViewModel by viewModels()
-
-    @Inject
-    lateinit var initialSharedPreferences: InitialSharedPreferences
 
     override fun onCreateBinding(
         inflater: LayoutInflater,
@@ -30,10 +25,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
         FragmentSplashBinding.inflate(inflater, container, false)
 
     override fun initial() {
-        if (!initialSharedPreferences.isAlarmSet()) {
-            setTheAlarm(requireContext())
-            initialSharedPreferences.setAlarmSet(true)
-        }
+        splashViewModel.settingAlarm()
     }
 
     override fun subscribe() {
@@ -46,6 +38,14 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                         SplashFragmentDirections
                             .actionSplashFragmentToPersonListFragment()
                     )
+                }
+        )
+
+        compositeDisposable.add(
+            splashViewModel.onSettingAlarmBehaveSub
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe {
+                    if (it) setTheAlarm(requireContext(), false)
                 }
         )
     }
@@ -68,6 +68,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
                 ContextCompat.getColor(requireContext(), R.color.group_red_dark)
             )
         )
+
+    override fun isBottomNavShown(): Boolean = false
 
     companion object {
         const val NOTIFICATION_REQUEST_CODE = 1

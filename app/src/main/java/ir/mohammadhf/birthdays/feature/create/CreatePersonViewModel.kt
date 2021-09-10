@@ -2,13 +2,11 @@ package ir.mohammadhf.birthdays.feature.create
 
 import android.graphics.Bitmap
 import androidx.hilt.lifecycle.ViewModelInject
-import io.reactivex.SingleObserver
 import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
-import ir.mohammadhf.birthdays.core.bases.BaseViewModel
 import ir.mohammadhf.birthdays.core.SettingSharedPrefManager
+import ir.mohammadhf.birthdays.core.bases.BaseViewModel
 import ir.mohammadhf.birthdays.data.model.Avatar
 import ir.mohammadhf.birthdays.data.model.Group
 import ir.mohammadhf.birthdays.data.model.Person
@@ -16,13 +14,15 @@ import ir.mohammadhf.birthdays.data.repo.AvatarRepository
 import ir.mohammadhf.birthdays.data.repo.GroupRepository
 import ir.mohammadhf.birthdays.data.repo.PersonRepository
 import ir.mohammadhf.birthdays.utils.DateDataGenerator
+import ir.mohammadhf.birthdays.utils.DateManager
 import java.io.File
 
 class CreatePersonViewModel @ViewModelInject constructor(
     private val personRepository: PersonRepository,
     private val groupRepository: GroupRepository,
     private val avatarRepository: AvatarRepository,
-    private val settingSharedPrefManager: SettingSharedPrefManager
+    private val settingSharedPrefManager: SettingSharedPrefManager,
+    private val dateManager: DateManager
 ) : BaseViewModel() {
     val personBehaveSub = BehaviorSubject.create<Person>()
     val groupListBehaveSub = BehaviorSubject.create<List<Group>>()
@@ -42,7 +42,7 @@ class CreatePersonViewModel @ViewModelInject constructor(
 
     private fun changeNotifyDateInPerson() {
         personBehaveSub.value?.let {
-            val months = DateDataGenerator.getMonthlyDays()
+            val months = DateDataGenerator.getMonthlyDays(dateManager.getTodayDateArray()[0])
 
             it.notifyDay = it.birthdayDay - DAYS_BEFORE
             it.notifyMonth = it.birthdayMonth
@@ -112,21 +112,22 @@ class CreatePersonViewModel @ViewModelInject constructor(
     }
 
     fun getGroups() {
-        groupRepository.getAll()
+        compositeDisposable.add(groupRepository.getAll()
             .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe(object : SingleObserver<List<Group>> {
-                override fun onSubscribe(d: Disposable) {
-                    compositeDisposable.add(d)
-                }
+            .observeOn(Schedulers.io())
+            .subscribe { groupList, error ->
+                groupList?.let { groupListBehaveSub.onNext(it) }
+                error?.printStackTrace()
+            })
+    }
 
-                override fun onSuccess(groupList: List<Group>) {
-                    groupListBehaveSub.onNext(groupList)
-                }
-
-                override fun onError(e: Throwable) {
-                    e.printStackTrace()
-                }
+    fun saveNewGroup(group: Group) {
+        compositeDisposable.add(groupRepository.insertOneGroup(group)
+            .subscribeOn(Schedulers.io())
+            .observeOn(Schedulers.io())
+            .subscribe { groupId, error ->
+                groupId?.let { getGroups() }
+                error?.printStackTrace()
             })
     }
 

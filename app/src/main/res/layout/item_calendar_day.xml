@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ir.mohammadhf.birthdays.views.GroupView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/CalendarDay"
+    android:layout_width="@dimen/calendar_day_width"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    app:gv_defColor="@color/colorAccent"
+    app:gv_isSelected="true"
+    app:gv_radius="@dimen/calendar_day_radius"
+    app:gv_strokeWidth="@dimen/calendar_day_stroke_width"
+    tools:text="29" />
