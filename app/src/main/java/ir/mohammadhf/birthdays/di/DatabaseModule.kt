@@ -5,19 +5,20 @@ import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
 import dagger.hilt.android.qualifiers.ApplicationContext
+import dagger.hilt.components.SingletonComponent
 import ir.mohammadhf.birthdays.data.AppDatabase
-import ir.mohammadhf.birthdays.data.model.GroupDao
-import ir.mohammadhf.birthdays.data.model.PersonDao
+import ir.mohammadhf.birthdays.data.local.GroupDao
+import ir.mohammadhf.birthdays.data.local.PersonDao
+import ir.mohammadhf.birthdays.data.local.StoryFrameDao
 import javax.inject.Singleton
 
-@InstallIn(ApplicationComponent::class)
 @Module
+@InstallIn(SingletonComponent::class)
 object DatabaseModule {
 
-    @Provides
     @Singleton
+    @Provides
     fun provideAppDatabase(@ApplicationContext context: Context): AppDatabase =
         Room.databaseBuilder(
             context,
@@ -25,13 +26,18 @@ object DatabaseModule {
             "birthday_db"
         ).build()
 
-    @Provides
     @Singleton
+    @Provides
     fun providePersonDao(appDatabase: AppDatabase): PersonDao =
         appDatabase.personDao()
 
-    @Provides
     @Singleton
+    @Provides
     fun provideGroupDao(appDatabase: AppDatabase): GroupDao =
         appDatabase.groupDao()
+
+    @Singleton
+    @Provides
+    fun provideStoryFrameDao(appDatabase: AppDatabase): StoryFrameDao =
+        appDatabase.storyFrameDao()
 }

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/story_build_nav"
+    app:startDestination="@+id/giftFragment">
+
+    <fragment
+        android:id="@+id/giftFragment"
+        android:name="ir.mohammadhf.birthdays.feature.story.frame.FramesFragment"
+        android:label="GiftFragment"
+        tools:layout="@layout/fragment_frames">
+        <action
+            android:id="@+id/action_giftFragment_to_storyBuilderFragment"
+            app:destination="@id/storyBuilderFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
+    </fragment>
+    <fragment
+        android:id="@+id/storyBuilderFragment"
+        android:name="ir.mohammadhf.birthdays.feature.story.builder.StoryBuilderFragment"
+        android:label="fragment_story_builder"
+        tools:layout="@layout/fragment_story_builder" >
+        <argument
+            android:name="frameId"
+            app:argType="long" />
+    </fragment>
+</navigation>

@@ -1,8 +1,8 @@
 package ir.mohammadhf.birthdays.data.repo
 
 import io.reactivex.Single
+import ir.mohammadhf.birthdays.data.local.AvatarLocalDataSource
 import ir.mohammadhf.birthdays.data.model.Avatar
-import ir.mohammadhf.birthdays.data.model.AvatarLocalDataSource
 import javax.inject.Inject
 
 class AvatarRepository @Inject constructor(

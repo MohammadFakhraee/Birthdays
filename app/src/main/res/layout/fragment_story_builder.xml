@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/DefFragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".feature.story.builder.StoryBuilderFragment">
+
+    <ir.mohammadhf.birthdays.views.StoryView
+        android:id="@+id/storyView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <ImageButton
+        android:id="@+id/backBtn"
+        style="@style/StoryImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/margin"
+        android:layout_marginTop="@dimen/margin_large"
+        android:contentDescription="@string/content_desc_back"
+        app:layout_constraintBottom_toTopOf="@+id/actionBarGuideLine"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
+
+    <ImageButton
+        android:id="@+id/choosePhotoIv"
+        style="@style/StoryImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/margin_large"
+        android:layout_marginEnd="@dimen/margin"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/ic_outline_add_a_photo_24" />
+
+    <ImageButton
+        android:id="@+id/chooseTextIv"
+        style="@style/StoryImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_large"
+        app:layout_constraintBottom_toBottomOf="@+id/choosePhotoIv"
+        app:layout_constraintEnd_toStartOf="@+id/choosePhotoIv"
+        app:layout_constraintTop_toTopOf="@+id/choosePhotoIv"
+        app:srcCompat="@drawable/ic_baseline_text_fields_24" />
+
+    <ImageButton
+        android:id="@+id/chooseStickerIv"
+        style="@style/StoryImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_large"
+        app:layout_constraintBottom_toBottomOf="@+id/chooseTextIv"
+        app:layout_constraintEnd_toStartOf="@+id/chooseTextIv"
+        app:layout_constraintTop_toTopOf="@+id/chooseTextIv"
+        app:srcCompat="@drawable/ic_outline_emoji_24" />
+
+    <ImageButton
+        android:id="@+id/saveIv"
+        style="@style/StoryImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/margin_large"
+        app:layout_constraintBottom_toBottomOf="@+id/chooseStickerIv"
+        app:layout_constraintEnd_toStartOf="@+id/chooseStickerIv"
+        app:layout_constraintTop_toTopOf="@+id/chooseStickerIv"
+        app:srcCompat="@drawable/ic_baseline_save_24" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/shareFab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_margin="@dimen/margin_large"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:srcCompat="@drawable/ic_baseline_share_24" />
+
+    <ImageButton
+        android:id="@+id/removeLayoutIb"
+        style="@style/StoryImgBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_x_large"
+        android:padding="@dimen/padding_large"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/ic_outline_delete_24" />
+</androidx.constraintlayout.widget.ConstraintLayout>

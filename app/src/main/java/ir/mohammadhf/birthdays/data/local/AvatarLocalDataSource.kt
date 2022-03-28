@@ -1,7 +1,8 @@
-package ir.mohammadhf.birthdays.data.model
+package ir.mohammadhf.birthdays.data.local
 
 import io.reactivex.Single
 import ir.mohammadhf.birthdays.R
+import ir.mohammadhf.birthdays.data.model.Avatar
 import javax.inject.Inject
 
 class AvatarLocalDataSource @Inject constructor() {

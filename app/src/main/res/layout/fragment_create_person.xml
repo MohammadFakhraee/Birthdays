@@ -33,14 +33,14 @@
                     android:layout_marginStart="@dimen/margin"
                     android:background="@android:color/transparent"
                     android:contentDescription="@string/content_desc_back"
-                    android:tint="@color/black"
+                    app:tint="@color/black"
                     app:srcCompat="@drawable/ic_baseline_arrow_back_24" />
 
                 <TextView
                     style="@style/TextTitle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/margin_large"
+                    android:layout_marginStart="@dimen/margin_x_large"
                     android:layout_weight="1"
                     android:gravity="start"
                     android:text="@string/create_person" />
@@ -64,7 +64,7 @@
                 android:id="@+id/selectedIv"
                 android:layout_width="@dimen/circle_image_large"
                 android:layout_height="@dimen/circle_image_large"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_x_large"
                 android:src="@drawable/ic_avatar_1"
                 android:tag="Male_1"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -98,7 +98,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="@dimen/margin"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_x_large"
                 android:layout_marginEnd="@dimen/margin"
                 android:autofillHints=""
                 android:hint="@string/hint_name"
@@ -112,7 +112,7 @@
                 style="@style/TextMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_x_large"
                 android:text="@string/birthday"
                 app:layout_constraintStart_toStartOf="@+id/personNameEt"
                 app:layout_constraintTop_toBottomOf="@+id/personNameEt" />
@@ -134,7 +134,7 @@
                 style="@style/TextMain"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/margin_large"
+                android:layout_marginTop="@dimen/margin_x_large"
                 android:text="@string/group"
                 app:layout_constraintStart_toStartOf="@+id/personNameEt"
                 app:layout_constraintTop_toBottomOf="@+id/birthdayTv" />
@@ -197,7 +197,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
-        android:layout_margin="@dimen/margin_large"
+        android:layout_margin="@dimen/margin_x_large"
         android:visibility="gone"
         app:srcCompat="@drawable/ic_baseline_done_24" />
 
@@ -206,7 +206,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="start|bottom"
-        android:layout_margin="@dimen/margin_large"
+        android:layout_margin="@dimen/margin_x_large"
         android:visibility="gone"
         app:srcCompat="@drawable/ic_baseline_cancel_24" />
 </FrameLayout>

@@ -1,8 +1,9 @@
-package ir.mohammadhf.birthdays.data.model
+package ir.mohammadhf.birthdays.data.local
 
 import androidx.room.*
 import io.reactivex.Completable
 import io.reactivex.Single
+import ir.mohammadhf.birthdays.data.model.Group
 
 @Dao
 interface GroupDao {
@@ -11,7 +12,7 @@ interface GroupDao {
     fun insertOne(group: Group): Single<Long>
 
     @Insert
-    fun insertAll(vararg group: Group): Completable
+    suspend fun insertAll(vararg group: Group)
 
     @Update
     fun update(group: Group): Completable

@@ -1,6 +1,4 @@
-package ir.mohammadhf.birthdays.data.model
-
-import ir.mohammadhf.birthdays.utils.formatDay
+package ir.mohammadhf.birthdays.utils
 
 data class TimerHolder(
     var days: Int,

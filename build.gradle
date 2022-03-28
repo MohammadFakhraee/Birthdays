@@ -2,19 +2,18 @@
 
 buildscript {
     ext.versions = [:]
-    versions.kotlin = '1.4.10'
-    versions.hilt = '2.28-alpha'
-    versions.hilt_viewmodel = '1.0.0-alpha02'
-    versions.nav = '2.3.0'
-    versions.nav_args = '2.3.0'
-    versions.room = '2.2.5'
+    versions.kotlin = '1.6.10'
+    versions.hilt = '2.38.1'
+    versions.nav = '2.4.1'
+    versions.nav_args = '2.4.1'
+    versions.room = '2.4.1'
 
     repositories {
         google()
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.2'
+        classpath 'com.android.tools.build:gradle:7.1.2'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$versions.kotlin"
         classpath "com.google.dagger:hilt-android-gradle-plugin:$versions.hilt"
         classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$versions.nav_args"

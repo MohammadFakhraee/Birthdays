@@ -1,13 +1,15 @@
 package ir.mohammadhf.birthdays.feature.setting.groups
 
-import androidx.hilt.lifecycle.ViewModelInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import ir.mohammadhf.birthdays.core.bases.BaseViewModel
 import ir.mohammadhf.birthdays.data.model.Group
 import ir.mohammadhf.birthdays.data.repo.GroupRepository
+import javax.inject.Inject
 
-class GroupsManagerViewModel @ViewModelInject constructor(
+@HiltViewModel
+class GroupsManagerViewModel @Inject constructor(
     private val groupRepository: GroupRepository
 ) : BaseViewModel() {
     val groupListBS = BehaviorSubject.create<List<Group>>()

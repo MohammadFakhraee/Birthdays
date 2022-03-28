@@ -83,7 +83,7 @@
     // bottom nav strings
     <string name="bott_nav_birthday">تولد</string>
     <string name="bott_nav_calendar">تقویم</string>
-    <string name="bott_nav_gift">کادو</string>
+    <string name="bott_nav_gift">استوری</string>
 
     // content descriptions
     <string name="content_desc_back">بازگشت</string>
@@ -95,4 +95,9 @@
     <string name="content_desc_next_month">ماه بعد</string>
     <string name="content_desc_prev_month">ماه قبل</string>
     <string name="content_desc_add_birthday">افزودن تولد جدید</string>
+
+    // gift frames
+    <string name="gift_frame_tab_raw_frames">قاب استوری</string>
+    <string name="gift_frame_tab_built_gifts">استوری های ساخته شده</string>
+    <string name="extended_fab_label">اشتراک</string>
 </resources>

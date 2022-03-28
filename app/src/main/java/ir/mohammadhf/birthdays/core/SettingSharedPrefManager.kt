@@ -17,9 +17,9 @@ class SettingSharedPrefManager @Inject constructor(
         setCounter(getCounter() + 1)
     }
 
-    private fun setCounter(counter: Int) {
-        val editor = sharedPreferences.edit()
-        editor.putInt(KEY_SELECTED_IMAGE_COUNTER, counter)
-        editor.apply()
-    }
+    private fun setCounter(counter: Int) =
+        sharedPreferences.edit().apply {
+            putInt(KEY_SELECTED_IMAGE_COUNTER, counter)
+            apply()
+        }
 }

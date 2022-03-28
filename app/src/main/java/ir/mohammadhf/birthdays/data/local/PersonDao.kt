@@ -1,9 +1,10 @@
-package ir.mohammadhf.birthdays.data.model
+package ir.mohammadhf.birthdays.data.local
 
 import androidx.room.*
 import io.reactivex.Completable
 import io.reactivex.Flowable
 import io.reactivex.Single
+import ir.mohammadhf.birthdays.data.model.Person
 
 @Dao
 interface PersonDao {

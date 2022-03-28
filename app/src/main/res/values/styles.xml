@@ -99,4 +99,10 @@
         <item name="colorPrimary">@color/colorAccent</item>
         <item name="android:background">@color/white</item>
     </style>
+
+    <style name="StoryImgBtn" parent="AppTheme">
+        <item name="android:tint">@color/white</item>
+        <item name="android:padding">@dimen/padding</item>
+        <item name="android:background">@drawable/bg_circle_transparent_black</item>
+    </style>
 </resources>

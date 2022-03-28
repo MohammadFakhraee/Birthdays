@@ -21,8 +21,8 @@
         style="@style/TextTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/margin_large"
-        android:layout_marginEnd="@dimen/margin_large"
+        android:layout_marginStart="@dimen/margin_x_large"
+        android:layout_marginEnd="@dimen/margin_x_large"
         android:textColor="@color/colorAccent"
         tools:text="This week" />
 

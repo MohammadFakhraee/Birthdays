@@ -1,6 +1,6 @@
 package ir.mohammadhf.birthdays.feature.birthdays
 
-import androidx.hilt.lifecycle.ViewModelInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
 import ir.mohammadhf.birthdays.core.bases.BaseViewModel
@@ -10,8 +10,10 @@ import ir.mohammadhf.birthdays.data.repo.GroupRepository
 import ir.mohammadhf.birthdays.data.repo.PersonRepository
 import ir.mohammadhf.birthdays.utils.DateManager
 import ir.mohammadhf.birthdays.utils.PersonConvertor
+import javax.inject.Inject
 
-class BirthListViewModel @ViewModelInject constructor(
+@HiltViewModel
+class BirthListViewModel @Inject constructor(
     private val personRepository: PersonRepository,
     private val groupRepository: GroupRepository,
     private val dateManager: DateManager,

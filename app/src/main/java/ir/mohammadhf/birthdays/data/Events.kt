@@ -7,3 +7,7 @@ data class BirthdaySelectEvent(
 data class GroupListSelectEvent(
     val groups: ArrayList<Long>
 )
+
+data class FrameSelectEvent(
+    val id: Long
+)

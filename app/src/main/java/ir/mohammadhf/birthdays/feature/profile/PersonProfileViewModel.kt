@@ -1,6 +1,6 @@
 package ir.mohammadhf.birthdays.feature.profile
 
-import androidx.hilt.lifecycle.ViewModelInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.Completable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
@@ -8,13 +8,15 @@ import io.reactivex.subjects.BehaviorSubject
 import ir.mohammadhf.birthdays.core.bases.BaseViewModel
 import ir.mohammadhf.birthdays.data.model.Group
 import ir.mohammadhf.birthdays.data.model.Person
-import ir.mohammadhf.birthdays.data.model.TimerHolder
 import ir.mohammadhf.birthdays.data.repo.GroupRepository
 import ir.mohammadhf.birthdays.data.repo.PersonRepository
 import ir.mohammadhf.birthdays.utils.DateManager
+import ir.mohammadhf.birthdays.utils.TimerHolder
 import java.util.*
+import javax.inject.Inject
 
-class PersonProfileViewModel @ViewModelInject constructor(
+@HiltViewModel
+class PersonProfileViewModel @Inject constructor(
     private val personRepository: PersonRepository,
     private val groupRepository: GroupRepository,
     private val dateManager: DateManager

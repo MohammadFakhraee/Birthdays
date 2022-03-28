@@ -61,4 +61,43 @@
     <string name="delete_message">Are you sure you want to delete this person?</string>
     <string name="delete_accept">Yes</string>
     <string name="delete_reject">No</string>
+
+    // create group dialog
+    <string name="adding_new_group">Add new group</string>
+    <string name="hint_group_name">Group name</string>
+
+    // settings
+    <string name="settings">Settings</string>
+    <string name="groups_managing">Managing groups</string>
+
+    // calendar
+    // days of month abbreviation
+    <string name="first_day">sat</string>
+    <string name="second_day">sun</string>
+    <string name="third_day">mon</string>
+    <string name="forth_day">tue</string>
+    <string name="fifth_day">wed</string>
+    <string name="sixth_day">thu</string>
+    <string name="seventh_day">fri</string>
+    <string name="no_birthday_in_selected_date">There is no birthday in selected date.</string>
+
+    // bottom nav strings
+    <string name="bott_nav_birthday">birthday</string>
+    <string name="bott_nav_calendar">calendar</string>
+    <string name="bott_nav_gift">story</string>
+
+    // content descriptions
+    <string name="content_desc_back">back</string>
+    <string name="content_desc_managing_groups">managing groups</string>
+    <string name="content_desc_remove">remove</string>
+    <string name="content_desc_group_add">add new group</string>
+    <string name="content_desc_filter">filter</string>
+    <string name="content_desc_setting">settings</string>
+    <string name="content_desc_next_month">next month</string>
+    <string name="content_desc_prev_month">previous month</string>
+    <string name="content_desc_add_birthday">add new birthday</string>
+
+    // gift frames
+    <string name="gift_frame_tab_raw_frames">Frames</string>
+    <string name="gift_frame_tab_built_gifts">Built Stories</string>
 </resources>

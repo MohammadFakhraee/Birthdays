@@ -9,23 +9,36 @@ class InitialSharedPreferences @Inject constructor(
     companion object KEYS {
         const val IS_GROUP_SAVED = "key_initiate_groups"
         const val IS_ALARM_SET = "key_initiate_alarm"
+        const val IS_GIFT_FRAMES_SAVED = "key_gift_frames"
     }
 
     fun setGroupSaved(isGroupSaved: Boolean) {
-        val editor = sharedPreferences.edit()
-        editor.putBoolean(IS_GROUP_SAVED, isGroupSaved)
-        editor.apply()
+        sharedPreferences.edit().apply {
+            putBoolean(IS_GROUP_SAVED, isGroupSaved)
+            apply()
+        }
     }
 
     fun isGroupSaved(): Boolean =
         sharedPreferences.getBoolean(IS_GROUP_SAVED, false)
 
     fun setAlarmSet(isAlarmSet: Boolean) {
-        val editor = sharedPreferences.edit()
-        editor.putBoolean(IS_ALARM_SET, isAlarmSet)
-        editor.apply()
+        sharedPreferences.edit().apply {
+            putBoolean(IS_ALARM_SET, isAlarmSet)
+            apply()
+        }
     }
 
     fun isAlarmSet(): Boolean =
         sharedPreferences.getBoolean(IS_ALARM_SET, false)
+
+    fun setGiftFrameSaved(isFramesSaved: Boolean) {
+        sharedPreferences.edit().apply() {
+            putBoolean(IS_GIFT_FRAMES_SAVED, isFramesSaved)
+            apply()
+        }
+    }
+
+    fun isFramesSaved(): Boolean =
+        sharedPreferences.getBoolean(IS_GIFT_FRAMES_SAVED, false)
 }

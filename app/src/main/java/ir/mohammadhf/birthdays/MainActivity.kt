@@ -2,75 +2,55 @@ package ir.mohammadhf.birthdays
 
 import android.content.Context
 import android.os.Bundle
-import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import androidx.appcompat.app.AppCompatActivity
-import androidx.lifecycle.LiveData
 import androidx.navigation.NavController
+import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.setupWithNavController
 import dagger.hilt.android.AndroidEntryPoint
 import dagger.hilt.android.EntryPointAccessors
 import ir.mohammadhf.birthdays.databinding.ActivityMainBinding
 import ir.mohammadhf.birthdays.di.WrapContextEntry
-import ir.mohammadhf.birthdays.utils.setupWithNavController
+import ir.mohammadhf.birthdays.utils.WrapContext
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
     companion object {
         const val AVATAR_FOLDER_NAME = "person_avatar"
+        const val GIFT_FRAME_FOLDER_NAME = "gift_frames"
     }
 
-    private lateinit var mainBinding: ActivityMainBinding
-    private var currentNavController: LiveData<NavController>? = null
+    private lateinit var navController: NavController
+    private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var binding: ActivityMainBinding
+
+    @Inject
+    lateinit var wrapper: WrapContext
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        mainBinding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(mainBinding.root)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-//        if (savedInstanceState == null)
-        setUpBottomNavigation()
-        // Else, need to wait for onRestoreInstanceState
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-        // Now that BottomNavigationBar has restored its instance state
-        // and its selectedItemId, we can proceed with setting up the+
-        // BottomNavigationBar with Navigation
-        setUpBottomNavigation()
-    }
-
-    override fun attachBaseContext(newBase: Context?) {
-        val wrapper =
-            EntryPointAccessors.fromApplication(newBase!!, WrapContextEntry::class.java).wrapper
-        super.attachBaseContext(wrapper.setLocale(newBase))
-    }
-
-    private fun setUpBottomNavigation() {
-        val navGraphIds = listOf(
-            R.navigation.main_nav,
-            R.navigation.calendar_nav,
-            R.navigation.gift_nav
-        )
-
-        // Setup the bottom navigation view with a list of navigation graphs
-        val controller = mainBinding.botNav.setupWithNavController(
-            navGraphIds = navGraphIds,
-            fragmentManager = supportFragmentManager,
-            containerId = R.id.nav_host_fragment,
-            intent = intent
-        )
-
-        // Whenever the selected controller changes, setup the action bar.
-        controller.observe(this) {}
-
-        currentNavController = controller
+//         setup bottom navigation view with navController
+        navController = binding.navHostContainer.getFragment<NavHostFragment>().navController
+        binding.botNav.setupWithNavController(navController)
     }
 
     override fun onSupportNavigateUp(): Boolean {
-        return currentNavController?.value?.navigateUp() ?: false
+        return navController.navigateUp()
     }
 
     fun changeBottomNavVisibility(show: Boolean) {
-        mainBinding.botNav.visibility = if (show) View.VISIBLE else View.GONE
+        binding.botNav.visibility = if (show) VISIBLE else GONE
+//        binding.botNav.visibility = VISIBLE
+    }
+
+    override fun attachBaseContext(newBase: Context) {
+        wrapper = EntryPointAccessors.fromApplication(newBase, WrapContextEntry::class.java).wrapper
+        super.attachBaseContext(wrapper.setLocale(newBase))
     }
 }

@@ -1,7 +1,7 @@
 package ir.mohammadhf.birthdays.feature.create
 
 import android.graphics.Bitmap
-import androidx.hilt.lifecycle.ViewModelInject
+import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
@@ -16,8 +16,10 @@ import ir.mohammadhf.birthdays.data.repo.PersonRepository
 import ir.mohammadhf.birthdays.utils.DateDataGenerator
 import ir.mohammadhf.birthdays.utils.DateManager
 import java.io.File
+import javax.inject.Inject
 
-class CreatePersonViewModel @ViewModelInject constructor(
+@HiltViewModel
+class CreatePersonViewModel @Inject constructor(
     private val personRepository: PersonRepository,
     private val groupRepository: GroupRepository,
     private val avatarRepository: AvatarRepository,

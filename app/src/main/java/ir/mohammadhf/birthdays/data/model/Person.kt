@@ -35,10 +35,13 @@ data class Person(
         if (birthdayYear == null) null
         else {
             var age = today[0] - birthdayYear!!
-            if (!isAfterToday(today)) age++
+            if (isBeforeToday(today)) age++
             age
         }
 
     fun isAfterToday(today: IntArray): Boolean =
         birthdayMonth > today[1] || (birthdayMonth == today[1] && birthdayDay > today[2])
+
+    fun isBeforeToday(today: IntArray): Boolean =
+        !isAfterToday(today)
 }

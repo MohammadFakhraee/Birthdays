@@ -77,7 +77,7 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
                 val bottomSheet = ChooseBirthdayDialog()
                 bottomSheet.show(childFragmentManager, "CHOOSE_BIRTH_BOTTOM_SHEET")
 
-                bottomSheet.selectedDateBehaveSub.subscribe {
+                val dis = bottomSheet.selectedDateBehaveSub.subscribe {
                     createPersonViewModel.changeBirthday(it[2]!!, it[1]!!, it[0])
                     bottomSheet.dismiss()
                 }
@@ -88,7 +88,7 @@ class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
                 bottomSheet.isCancelable = false
                 bottomSheet.show(childFragmentManager, "CREATE_GROUP_BOTTOM_SHEET")
 
-                bottomSheet.createdGroupBehaveSub.subscribe {
+                val dis = bottomSheet.createdGroupBehaveSub.subscribe {
                     createPersonViewModel.saveNewGroup(it)
                     bottomSheet.dismiss()
                 }

@@ -2,7 +2,7 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/main_nav"
+        android:id="@+id/birth_list_nav"
         android:icon="@drawable/ic_baseline_cake_24"
         android:title="@string/bott_nav_birthday" />
 
@@ -12,7 +12,7 @@
         android:title="@string/bott_nav_calendar" />
 
     <item
-        android:id="@+id/gift_nav"
+        android:id="@+id/story_build_nav"
         android:icon="@drawable/ic_baseline_gift_24"
         android:title="@string/bott_nav_gift" />
 </menu>
