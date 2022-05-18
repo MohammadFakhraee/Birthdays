@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/birth_list_nav"
-    app:startDestination="@+id/splashFragment">
+    app:startDestination="@id/personListFragment">
 
     <fragment
         android:id="@+id/personListFragment"
@@ -24,6 +24,13 @@
             app:exitAnim="@anim/nav_exit"
             app:popEnterAnim="@anim/nav_pop_enter"
             app:popExitAnim="@anim/nav_pop_exit" />
+        <action
+            android:id="@+id/action_personListFragment_to_splashFragment"
+            app:destination="@id/splashFragment"
+            app:enterAnim="@anim/nav_enter"
+            app:exitAnim="@anim/nav_exit"
+            app:popEnterAnim="@anim/nav_pop_enter"
+            app:popExitAnim="@anim/nav_pop_exit" />
     </fragment>
     <fragment
         android:id="@+id/createPersonFragment"
@@ -39,15 +46,7 @@
         android:id="@+id/splashFragment"
         android:name="ir.mohammadhf.birthdays.feature.splash.SplashFragment"
         android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash">
-        <action
-            android:id="@+id/action_splashFragment_to_personListFragment"
-            app:destination="@id/personListFragment"
-            app:enterAnim="@anim/nav_enter"
-            app:exitAnim="@anim/nav_exit"
-            app:popUpTo="@id/splashFragment"
-            app:popUpToInclusive="true" />
-    </fragment>
+        tools:layout="@layout/fragment_splash" />
     <fragment
         android:id="@+id/personProfileFragment"
         android:name="ir.mohammadhf.birthdays.feature.profile.PersonProfileFragment"

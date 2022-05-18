@@ -5,21 +5,28 @@
       <map>
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/bg_btn_primary.xml" value="0.125" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/bg_circle.xml" value="0.125" />
+        <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/bg_circle_transparent_black.xml" value="0.1585" />
+        <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/bg_circle_white.xml" value="0.1175" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/bg_highlight.xml" value="0.125" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_baseline_add_a_photo_32.xml" value="0.125" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_baseline_arrow_back_24.xml" value="0.133" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_baseline_cake_24.xml" value="0.1275" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_baseline_calendar_today_24.xml" value="0.1275" />
+        <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_baseline_filter_32.xml" value="0.1275" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_baseline_gift_24.xml" value="0.1275" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_baseline_save_24.xml" value="0.133" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_baseline_share_32.xml" value="0.125" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_baseline_text_fields_24.xml" value="0.125" />
+        <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_color_picker.xml" value="0.1275" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_outline_add_a_photo_24.xml" value="0.1295" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_outline_add_a_photo_32.xml" value="0.125" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_outline_delete_24.xml" value="0.125" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/drawable/ic_outline_emoji_24.xml" value="0.133" />
+        <entry key="..\:/android/projects/Birthdays/app/src/main/res/font-v26/font_shabnam.xml" value="0.23981481481481481" />
+        <entry key="..\:/android/projects/Birthdays/app/src/main/res/font/font_shabnam.xml" value="0.23378995433789954" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/activity_main.xml" value="0.18611111111111112" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/dialog_choose_birthday.xml" value="0.2037037037037037" />
+        <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/dialog_create_group.xml" value="0.19722222222222222" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/fragmen_build_story.xml" value="0.2101851851851852" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/fragment_birth_list.xml" value="0.17777777777777778" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/fragment_calendar.xml" value="0.1935185185185185" />
@@ -37,11 +44,13 @@
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_calendar_day.xml" value="0.1935185185185185" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_date_title.xml" value="0.2101851851851852" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_date_title_shimmer.xml" value="0.2101851851851852" />
+        <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_font.xml" value="0.2101851851851852" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_frame.xml" value="0.2101851851851852" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_group.xml" value="0.1935185185185185" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_groups_manager.xml" value="0.1935185185185185" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_person_birthday.xml" value="0.1935185185185185" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_person_birthday_shimmer.xml" value="0.2101851851851852" />
+        <entry key="..\:/android/projects/Birthdays/app/src/main/res/layout/item_type_face.xml" value="0.2101851851851852" />
         <entry key="..\:/android/projects/Birthdays/app/src/main/res/menu/bottom_nav_menu.xml" value="0.18611111111111112" />
       </map>
     </option>

@@ -8,8 +8,9 @@ class InitialSharedPreferences @Inject constructor(
 ) {
     companion object KEYS {
         const val IS_GROUP_SAVED = "key_initiate_groups"
-        const val IS_ALARM_SET = "key_initiate_alarm"
+        const val IS_ALARM_SET = "key_initiate_alarm_manager"
         const val IS_GIFT_FRAMES_SAVED = "key_gift_frames"
+        const val IS_INITIAL_DONE = "key_init_done"
     }
 
     fun setGroupSaved(isGroupSaved: Boolean) {
@@ -41,4 +42,14 @@ class InitialSharedPreferences @Inject constructor(
 
     fun isFramesSaved(): Boolean =
         sharedPreferences.getBoolean(IS_GIFT_FRAMES_SAVED, false)
+
+    fun setInitialDone(isInitialDone: Boolean) {
+        sharedPreferences.edit().apply() {
+            putBoolean(IS_INITIAL_DONE, isInitialDone)
+            apply()
+        }
+    }
+
+    fun isInitialDone(): Boolean =
+        sharedPreferences.getBoolean(IS_INITIAL_DONE, false)
 }

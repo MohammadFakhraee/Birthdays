@@ -6,6 +6,7 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">@font/shabnam</item>
     </style>
 
     <style name="DefFragment" parent="AppTheme">
@@ -100,9 +101,12 @@
         <item name="android:background">@color/white</item>
     </style>
 
-    <style name="StoryImgBtn" parent="AppTheme">
-        <item name="android:tint">@color/white</item>
+    <style name="StoryImageBtn" parent="AppTheme" >
         <item name="android:padding">@dimen/padding</item>
         <item name="android:background">@drawable/bg_circle_transparent_black</item>
+    </style>
+
+    <style name="StoryImgBtnWhiteTint" parent="StoryImageBtn">
+        <item name="android:tint">@color/white</item>
     </style>
 </resources>

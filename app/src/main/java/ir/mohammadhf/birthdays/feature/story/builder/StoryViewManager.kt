@@ -7,6 +7,7 @@ import ir.mohammadhf.birthdays.feature.story.behaviors.IRotateListener
 import ir.mohammadhf.birthdays.feature.story.behaviors.ITouchListener
 import ir.mohammadhf.birthdays.feature.story.behaviors.IZoomListener
 import ir.mohammadhf.birthdays.feature.story.layouts.Layout
+import ir.mohammadhf.birthdays.feature.story.layouts.TextLayout
 import javax.inject.Inject
 
 class StoryViewManager @Inject constructor() {
@@ -19,6 +20,7 @@ class StoryViewManager @Inject constructor() {
     var onLayoutTouchedListener: ((layout: Layout?) -> Unit)? = null
 
     fun onDraw(canvas: Canvas) {
+        Log.i("OnDrawMethod", "view manager onDraw is called")
         mLayouts.forEach { it.onDraw(canvas) }
     }
 
@@ -118,6 +120,10 @@ class StoryViewManager @Inject constructor() {
             mLayouts[i].let { if (it.isTouchInside(x, y)) return it }
         }
         return null
+    }
+
+    fun changeSelectedLayoutDrawType() {
+        mTouchedLay?.apply { if (this is TextLayout) nextDrawType() }
     }
 
     companion object {

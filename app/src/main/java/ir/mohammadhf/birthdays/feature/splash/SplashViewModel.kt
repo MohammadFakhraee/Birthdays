@@ -43,6 +43,9 @@ class SplashViewModel @Inject constructor(
             groupJob.join()
             framesJob.join()
             alarmJob.join()
+
+            initialSharedPreferences.setInitialDone(true)
+
             onFinish()
         }
     }

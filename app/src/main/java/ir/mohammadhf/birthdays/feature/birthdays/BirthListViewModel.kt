@@ -3,6 +3,7 @@ package ir.mohammadhf.birthdays.feature.birthdays
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.schedulers.Schedulers
 import io.reactivex.subjects.BehaviorSubject
+import ir.mohammadhf.birthdays.core.InitialSharedPreferences
 import ir.mohammadhf.birthdays.core.bases.BaseViewModel
 import ir.mohammadhf.birthdays.data.model.BirthdayMulti
 import ir.mohammadhf.birthdays.data.model.Group
@@ -17,7 +18,8 @@ class BirthListViewModel @Inject constructor(
     private val personRepository: PersonRepository,
     private val groupRepository: GroupRepository,
     private val dateManager: DateManager,
-    private val personConvertor: PersonConvertor
+    private val personConvertor: PersonConvertor,
+    private val initialSharedPreferences: InitialSharedPreferences
 ) : BaseViewModel() {
     val personListBS = BehaviorSubject.create<ArrayList<BirthdayMulti>>()
     val groupListBS = BehaviorSubject.create<List<Group>>()
@@ -55,12 +57,6 @@ class BirthListViewModel @Inject constructor(
             })
     }
 
-    fun saveNewGroup(group: Group) {
-        compositeDisposable.add(groupRepository.insertOneGroup(group)
-            .subscribeOn(Schedulers.io())
-            .subscribe { groupId, error ->
-                groupId?.let { getGroupList() }
-                error?.printStackTrace()
-            })
-    }
+    fun isInitialDone(): Boolean =
+        initialSharedPreferences.isInitialDone()
 }

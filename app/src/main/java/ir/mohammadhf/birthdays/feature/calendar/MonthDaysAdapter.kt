@@ -9,6 +9,7 @@ import ir.mohammadhf.birthdays.core.bases.BaseListAdapter
 import ir.mohammadhf.birthdays.core.bases.BaseViewHolder
 import ir.mohammadhf.birthdays.data.model.CalendarDay
 import ir.mohammadhf.birthdays.databinding.ItemCalendarDayBinding
+import ir.mohammadhf.birthdays.utils.formatDay
 import org.greenrobot.eventbus.EventBus
 import javax.inject.Inject
 
@@ -28,7 +29,7 @@ class MonthDaysAdapter @Inject constructor() :
         BaseViewHolder<CalendarDay>(itemCalendarDayBinding.root) {
         override fun bind(item: CalendarDay) {
             itemCalendarDayBinding.root.let {
-                it.text = item.ofMonth.toString()
+                it.text = item.ofMonth.formatDay()
                 it.isGroupModeEnabled = item.isSelected || item.isToday
                 it.isGroupSelected = item.isSelected
 

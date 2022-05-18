@@ -14,73 +14,50 @@ open class PicLayout(bitmap: Bitmap) : Layout(bitmap), ITouchListener, IZoomList
     IRotateListener {
     private val lastTouchedP = PointF()
 
-    override val maxZoom: Float
-        get() = 4.0F
-    override val minZoom: Float
-        get() = 0.5F
+    override val maxZoom: Float = 4.0F
+    override val minZoom: Float = 0.5F
+
     private var scaleFactor = 1f
     private var lastLineLength = 0f
 
-    private val rotateMatrix = Matrix()
+    private val matrix = Matrix()
     private var currentDeg = 0F
     private var lastDeg = 0F
 
     override fun onDraw(canvas: Canvas) {
-        rotateMatrix.apply {
+        matrix.apply {
             reset()
             postTranslate(-bitmap.width / 2f, -bitmap.height / 2f)
             postRotate(currentDeg)
             postScale(scaleFactor, scaleFactor)
             postTranslate(centerPoint.x, centerPoint.y)
         }
-        canvas.drawBitmap(bitmap, rotateMatrix, null)
+        canvas.drawBitmap(bitmap, matrix, null)
+        Log.i("OnDrawMethod", "Pic layout onDraw is called")
     }
 
     override fun onTouchDown(x: Float, y: Float) {
-        Log.i("PicLayout", "onTouchDown: x = $x & y = $y")
         lastTouchedP.set(x, y)
     }
 
     override fun onPointerTouchDown(x: Float, y: Float) {
-        Log.i("PicLayout", "onPointerTouchDown: (x, y) = ($x, $y)")
         lastTouchedP.set((x + lastTouchedP.x) / 2, (y + lastTouchedP.y) / 2)
-        Log.i(
-            "PicLayout",
-            "onPointerTouchDown: last touched (x, y) = (${lastTouchedP.x}, ${lastTouchedP.y})"
-        )
     }
 
     override fun onTouchMove(firstX: Float, firstY: Float, secondX: Float?, secondY: Float?) {
         secondX?.let {
-            Log.i(
-                "PicLayout",
-                "onTouchMove: (x1, y1) = ($firstX, $firstY) && (x2, y2) = ($secondX, ${secondY!!})"
-            )
             val centerX = (firstX + secondX) / 2
             val centerY = (firstY + secondY!!) / 2
             relocateCenterAndCorners(centerX - lastTouchedP.x, centerY - lastTouchedP.y)
             lastTouchedP.set(centerX, centerY)
-            Log.i(
-                "PicLayout",
-                "onTouchMove: last touched (x, y) = (${lastTouchedP.x}, ${lastTouchedP.y})"
-            )
         } ?: let {
             relocateCenterAndCorners(firstX - lastTouchedP.x, firstY - lastTouchedP.y)
             lastTouchedP.set(firstX, firstY)
-            Log.i(
-                "PicLayout",
-                "onTouchMove: last touched (x, y) = (${lastTouchedP.x}, ${lastTouchedP.y})"
-            )
         }
     }
 
     override fun onPointerTouchUp(x: Float, y: Float) {
-        Log.i("PicLayout", "onPointerTouchUp: (x, y) = ($x, $y)")
         lastTouchedP.set(2 * lastTouchedP.x - x, 2 * lastTouchedP.y - y)
-        Log.i(
-            "PicLayout",
-            "onPointerTouchUp: last touched (x, y) = (${lastTouchedP.x}, ${lastTouchedP.y})"
-        )
     }
 
     override fun onTouchUp(x: Float, y: Float) {

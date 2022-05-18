@@ -43,6 +43,11 @@ class BirthListFragment : BaseFragment<FragmentBirthListBinding>() {
         FragmentBirthListBinding.inflate(inflater, container, false)
 
     override fun initial() {
+        if (!birthListViewModel.isInitialDone())
+            findNavController().navigate(
+                BirthListFragmentDirections.actionPersonListFragmentToSplashFragment()
+            )
+
         getPersonsWithFilter(ArrayList())
         birthListViewModel.getGroupList()
 

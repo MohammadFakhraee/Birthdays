@@ -109,4 +109,38 @@ class InitialDataGenerator @Inject constructor() {
 
         return giftFrames to giftBitmaps
     }
+
+    fun generateColors(): ArrayList<Int> =
+        arrayListOf(
+            R.color.dark_blue,
+            R.color.blue,
+            R.color.lightBlue,
+            R.color.ultra_light_blue,
+            R.color.cyan,
+            R.color.deepPurple,
+            R.color.purple,
+            R.color.ultra_light_purple,
+            R.color.red,
+            R.color.pink,
+            R.color.deepOrange,
+            R.color.orange,
+            R.color.yellow,
+            R.color.green,
+            R.color.lightGreen,
+            R.color.lime,
+            R.color.black,
+            R.color.gray700,
+            R.color.gray500
+        )
+
+    fun generateTypeFaceId(): ArrayList<Int> =
+        arrayListOf(
+            R.font.duman,
+            R.font.shabnam,
+            R.font.digi_hekayat,
+            R.font.digi_hekayat_bold,
+            R.font.gandom,
+            R.font.khandevane,
+            R.font.mikhak_medium
+        )
 }

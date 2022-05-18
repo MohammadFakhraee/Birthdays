@@ -96,8 +96,13 @@
     <string name="content_desc_prev_month">ماه قبل</string>
     <string name="content_desc_add_birthday">افزودن تولد جدید</string>
 
-    // gift frames
-    <string name="gift_frame_tab_raw_frames">قاب استوری</string>
-    <string name="gift_frame_tab_built_gifts">استوری های ساخته شده</string>
-    <string name="extended_fab_label">اشتراک</string>
+    // story builder
+    <string name="frames_title">انتخاب قاب استوری</string>
+    <string name="external_storage_permission_required">برای ذخیره تصویر، دسترسی به فایل ها نیاز است.</string>
+    <string name="error_in_external_storage_saving">اشکال در ذخیر تصویر!</string>
+    <string name="success_in_external_storage_saving">تصویر با موفقیت ذخیره شد.</string>
+    <string name="accept_permission">تایید</string>
+    <string name="external_storage_denial">اجازه دسترسی به ذخیره در حافظه داده نشد.</string>
+    <string name="add_text_done">اضافه</string>
+    <string name="font_preview_text">آب</string>
 </resources>

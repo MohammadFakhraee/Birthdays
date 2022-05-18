@@ -20,9 +20,7 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
 
     override fun initial() {
         splashViewModel.initSetup(requireContext()) {
-            findNavController().navigate(
-                SplashFragmentDirections.actionSplashFragmentToPersonListFragment()
-            )
+            findNavController().popBackStack()
         }
     }
 
@@ -30,8 +28,4 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>() {
     }
 
     override fun isBottomNavShown(): Boolean = false
-
-    companion object {
-        const val NOTIFICATION_REQUEST_CODE = 1
-    }
 }

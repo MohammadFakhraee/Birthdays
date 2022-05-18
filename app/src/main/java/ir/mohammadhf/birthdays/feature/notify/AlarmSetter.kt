@@ -4,20 +4,14 @@ import android.app.AlarmManager
 import android.app.PendingIntent
 import android.content.Context
 import android.content.Intent
+import android.os.Build
 import android.util.Log
-import ir.mohammadhf.birthdays.feature.splash.SplashFragment
-import ir.mohammadhf.birthdays.utils.DateManager
 import java.text.SimpleDateFormat
 import java.util.*
-import javax.inject.Inject
-
-class AlarmSetter @Inject constructor(private val dateManager: DateManager) {
-
-
-}
 
 const val ALARM_REPEAT_HOUR = 8
 const val ALARM_REPEAT_MINUTE = 0
+const val NOTIFICATION_REQUEST_CODE = 1
 
 /**
  * Use this function to make an alarm which is fired in the morning at 8 o'clock.
@@ -47,13 +41,22 @@ fun setTheAlarm(
     val alarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
 
     val alarmPendingIntent = Intent(context, AlarmReceiver::class.java).let {
-        PendingIntent.getBroadcast(context, SplashFragment.NOTIFICATION_REQUEST_CODE, it, 0)
+        PendingIntent.getBroadcast(
+            context,
+            NOTIFICATION_REQUEST_CODE,
+            it,
+            when {
+                Build.VERSION.SDK_INT >= 31 -> PendingIntent.FLAG_MUTABLE
+                Build.VERSION.SDK_INT >= 23 -> PendingIntent.FLAG_IMMUTABLE
+                else -> 0
+            }
+        )
     }
 
     alarmManager.setWindow(
         AlarmManager.RTC_WAKEUP,
         calendar.timeInMillis,
-        AlarmManager.INTERVAL_FIFTEEN_MINUTES,
+        AlarmManager.INTERVAL_DAY,
         alarmPendingIntent
     )
     val str = SimpleDateFormat("yyyy/MM/dd  HH:mm:ss", Locale.US).format(calendar.time)

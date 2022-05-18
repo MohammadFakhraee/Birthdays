@@ -12,6 +12,7 @@ import ir.mohammadhf.birthdays.data.repo.PersonRepository
 import ir.mohammadhf.birthdays.utils.DateDataGenerator
 import ir.mohammadhf.birthdays.utils.DateManager
 import ir.mohammadhf.birthdays.utils.PersonConvertor
+import ir.mohammadhf.birthdays.utils.formatYear
 import javax.inject.Inject
 
 @HiltViewModel
@@ -119,7 +120,7 @@ class CalendarViewModel @Inject constructor(
         monthTitleBS.onNext(
             dateManager.monthOfYear(calSelectedMonth, BuildConfig.CURRENT_LANG) +
                     " " +
-                    calSelectedYear
+                    calSelectedYear.formatYear()
         )
         monthDaysListBS.onNext(listOfCalendarDays)
     }

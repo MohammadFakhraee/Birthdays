@@ -55,7 +55,7 @@ class NotifyTrigger @Inject constructor() {
             val notificationManager = context
                 .getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager?
 
-            // Add channel
+            // Add channel if there isn't one.
             notificationManager?.let {
                 if (!it.notificationChannels.contains(channel))
                     it.createNotificationChannel(channel)

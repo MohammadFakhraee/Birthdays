@@ -23,6 +23,7 @@
 
     <color name="transparent_yellow">#99fcd200</color>
     <color name="transparent_black">#bb000000</color>
+    <color name="light_transparent_black">#88000000</color>
 
     <color name="gray">#9E9E9E</color>
     <color name="gray50">#FAFAFA</color>
