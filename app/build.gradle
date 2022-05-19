@@ -14,14 +14,14 @@ android {
             keyPassword 'madHF1021'
         }
     }
-    compileSdkVersion 31
+    compileSdkVersion 32
 
     defaultConfig {
         applicationId "ir.mohammadhf.birthdays"
         minSdkVersion 19
-        targetSdkVersion 31
-        versionCode 3
-        versionName "2.0"
+        targetSdkVersion 32
+        versionCode 4
+        versionName "3.0"
         multiDexEnabled true
         vectorDrawables.useSupportLibrary = true
     }
