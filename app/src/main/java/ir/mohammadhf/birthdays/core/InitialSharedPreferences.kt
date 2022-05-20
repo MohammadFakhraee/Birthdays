@@ -34,7 +34,7 @@ class InitialSharedPreferences @Inject constructor(
         sharedPreferences.getBoolean(IS_ALARM_SET, false)
 
     fun setGiftFrameSaved(isFramesSaved: Boolean) {
-        sharedPreferences.edit().apply() {
+        sharedPreferences.edit().apply {
             putBoolean(IS_GIFT_FRAMES_SAVED, isFramesSaved)
             apply()
         }
@@ -44,7 +44,7 @@ class InitialSharedPreferences @Inject constructor(
         sharedPreferences.getBoolean(IS_GIFT_FRAMES_SAVED, false)
 
     fun setInitialDone(isInitialDone: Boolean) {
-        sharedPreferences.edit().apply() {
+        sharedPreferences.edit().apply {
             putBoolean(IS_INITIAL_DONE, isInitialDone)
             apply()
         }

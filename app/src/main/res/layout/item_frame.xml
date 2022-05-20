@@ -23,7 +23,8 @@
             android:id="@+id/frame_iv"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
+            android:contentDescription="@string/content_desc_story_frame"
             android:scaleType="fitXY"
-            tools:src="@drawable/hbd_frame_01" />
+            tools:src="@drawable/hbd_frame_02" />
     </androidx.cardview.widget.CardView>
 </androidx.constraintlayout.widget.ConstraintLayout>

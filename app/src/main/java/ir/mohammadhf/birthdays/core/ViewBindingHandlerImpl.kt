@@ -8,7 +8,7 @@ import androidx.viewbinding.ViewBinding
 import ir.mohammadhf.birthdays.core.bases.BaseFragment
 
 class ViewBindingHandlerImpl<T : ViewBinding> : ViewBindingHandler<T>, LifecycleObserver {
-    var binding: T? = null
+    private var binding: T? = null
     var lifecycle: Lifecycle? = null
 
     private lateinit var fragmentName: String

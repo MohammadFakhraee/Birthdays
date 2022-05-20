@@ -19,7 +19,7 @@ class DateManager @Inject constructor() {
     private var todayDateStr: String? = null
     private var todayDateArray: IntArray? = null
 
-    fun gregorian_to_solar(gYear: Int, gMonth: Int, gDay: Int): IntArray {
+    private fun gregorianToSolar(gYear: Int, gMonth: Int, gDay: Int): IntArray {
         var gY = gYear
         val gDaysPerMonth =
             intArrayOf(0, 31, 59, 90, 120, 151, 181, 212, 243, 273, 304, 334)
@@ -47,7 +47,7 @@ class DateManager @Inject constructor() {
         return intArrayOf(jy, jm, jd)
     }
 
-    fun jalali_to_gregorian(jYear: Int, jMonth: Int, jDay: Int): IntArray {
+    private fun solarToGregorian(jYear: Int, jMonth: Int, jDay: Int): IntArray {
         var jY = jYear
         var gy: Int
         if (jY > 979) {
@@ -145,7 +145,7 @@ class DateManager @Inject constructor() {
     }
 
     fun indexDayOfWeekFromSolar(jY: Int, jM: Int, jD: Int): Int {
-        val gregorian = jalali_to_gregorian(jY, jM, jD)
+        val gregorian = solarToGregorian(jY, jM, jD)
         return when (val index =
             indexDayOfWeekFromGregorian(gregorian[0], gregorian[1], gregorian[2])) {
             in 1..5 -> index.plus(2)
@@ -240,7 +240,7 @@ class DateManager @Inject constructor() {
 
             if (BuildConfig.CURRENT_LANG == "fa") {
                 var todayInts = intFormattedDate(todayDateStr!!, DATE_SEPARATOR)
-                todayInts = gregorian_to_solar(todayInts[0], todayInts[1], todayInts[2])
+                todayInts = gregorianToSolar(todayInts[0], todayInts[1], todayInts[2])
                 todayDateStr = stringFormattedDate(todayInts)
             }
         }

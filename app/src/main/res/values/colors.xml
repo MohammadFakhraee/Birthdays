@@ -11,19 +11,14 @@
     <color name="shimmer_effect_dark">#e0e0e0</color>
     <color name="shimmer_effect_light">#EEEEEE</color>
 
-    <color name="group_blue_dark">#36008d</color>
     <color name="group_blue_light">#00c9b8</color> // def color for family
     <color name="group_green">#00916e</color>
     <color name="group_yellow">#fcd200</color> // def color for friends
-    <color name="group_pink_light">#ffb3c1</color>
-    <color name="group_pink_dark">#fe5095</color>
     <color name="group_red_light">#fe5e54</color>
     <color name="group_red_dark">#d54022</color> // def color for work
-    <color name="group_brown">#85553a</color>
 
     <color name="transparent_yellow">#99fcd200</color>
     <color name="transparent_black">#bb000000</color>
-    <color name="light_transparent_black">#88000000</color>
 
     <color name="gray">#9E9E9E</color>
     <color name="gray50">#FAFAFA</color>

@@ -113,10 +113,6 @@ class GroupView @JvmOverloads constructor(
         super.onDraw(canvas)
     }
 
-    private fun drawBadge(canvas: Canvas) {
-
-    }
-
     fun addBadge(color: Int) {
         badgeColor = color
         showBadge = true

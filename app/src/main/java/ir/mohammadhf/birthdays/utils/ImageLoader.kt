@@ -6,7 +6,6 @@ import android.widget.ImageView
 import com.bumptech.glide.Glide
 import java.io.File
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class ImageLoader @Inject constructor() {
 

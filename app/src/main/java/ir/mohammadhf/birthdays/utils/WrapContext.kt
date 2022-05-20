@@ -5,7 +5,6 @@ import android.content.res.Configuration
 import ir.mohammadhf.birthdays.BuildConfig
 import java.util.*
 import javax.inject.Inject
-import javax.inject.Singleton
 
 class WrapContext @Inject constructor() {
     fun setLocale(context: Context): Context {

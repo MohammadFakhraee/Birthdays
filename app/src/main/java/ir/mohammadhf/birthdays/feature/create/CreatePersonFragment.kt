@@ -31,8 +31,8 @@ import javax.inject.Inject
 class CreatePersonFragment : BaseFragment<FragmentCreatePersonBinding>() {
     private val createPersonViewModel: CreatePersonViewModel by viewModels()
 
-    lateinit var avatarListAdapter: AvatarListAdapter
-    lateinit var createPersonGroupAdapter: CreatePersonGroupAdapter
+    private lateinit var avatarListAdapter: AvatarListAdapter
+    private lateinit var createPersonGroupAdapter: CreatePersonGroupAdapter
 
     @Inject
     lateinit var imageLoader: ImageLoader

@@ -36,10 +36,12 @@ class GroupsManagerFragment : BaseFragment<FragmentGroupsManagerBinding>() {
                 val bottomSheet = CreateGroupDialog()
                 bottomSheet.show(childFragmentManager, "CREATE_GROUP_BOTTOM_SHEET")
 
-                bottomSheet.createdGroupBehaveSub.subscribe {
-                    groupsManagerViewModel.addGroup(it)
-                    bottomSheet.dismiss()
-                }
+                compositeDisposable.add(
+                    bottomSheet.createdGroupBehaveSub.subscribe {
+                        groupsManagerViewModel.addGroup(it)
+                        bottomSheet.dismiss()
+                    }
+                )
             }
 
             backIb.setOnClickListener { findNavController().popBackStack() }
@@ -64,8 +66,8 @@ class GroupsManagerFragment : BaseFragment<FragmentGroupsManagerBinding>() {
                         dialogInterface.dismiss()
                         groupsManagerViewModel.removeGroup(it)
                     }
-                    .setNegativeButton(getString(R.string.delete_reject)) { dialogInterfacce, _ ->
-                        dialogInterfacce.dismiss()
+                    .setNegativeButton(getString(R.string.delete_reject)) { dialogInterface, _ ->
+                        dialogInterface.dismiss()
                     }
                     .show()
             }
@@ -78,10 +80,12 @@ class GroupsManagerFragment : BaseFragment<FragmentGroupsManagerBinding>() {
                 }
                 bottomSheet.show(childFragmentManager, "CREATE_GROUP_BOTTOM_SHEET")
 
-                bottomSheet.createdGroupBehaveSub.subscribe {
-                    groupsManagerViewModel.changeGroups(Group(selectedGroup.id, it.name, it.color))
-                    bottomSheet.dismiss()
-                }
+                compositeDisposable.add(
+                    bottomSheet.createdGroupBehaveSub.subscribe {
+                        groupsManagerViewModel.changeGroups(Group(selectedGroup.id, it.name, it.color))
+                        bottomSheet.dismiss()
+                    }
+                )
             }
         )
     }

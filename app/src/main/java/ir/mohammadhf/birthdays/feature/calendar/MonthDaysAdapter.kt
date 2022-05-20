@@ -44,7 +44,7 @@ class MonthDaysAdapter @Inject constructor() :
 
                 if (item.isSelected) lastSelectedPosition = adapterPosition
 
-                it.setOnClickListener { _ ->
+                it.setOnClickListener {
                     if (item.isInShownMonth) {
                         if (lastSelectedPosition >= 0) {
                             getItem(lastSelectedPosition).isSelected = false

@@ -11,7 +11,6 @@ import ir.mohammadhf.birthdays.data.InitialDataGenerator
 import ir.mohammadhf.birthdays.data.model.ColorItem
 import ir.mohammadhf.birthdays.data.model.StoryFrame
 import ir.mohammadhf.birthdays.data.model.TypeFaceItem
-import ir.mohammadhf.birthdays.data.repo.AvatarRepository
 import ir.mohammadhf.birthdays.data.repo.StoryFrameRepository
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -22,8 +21,7 @@ import javax.inject.Inject
 @HiltViewModel
 class StoryBuildViewModel @Inject constructor(
     private val storyFrameRepository: StoryFrameRepository,
-    private val initialDataGenerator: InitialDataGenerator,
-    private val avatarRepository: AvatarRepository
+    private val initialDataGenerator: InitialDataGenerator
 ) : BaseViewModel() {
     // Backing property to avoid state updates from other classes
     private val _uiState = MutableStateFlow(StoryUiState.Default)
@@ -50,7 +48,7 @@ class StoryBuildViewModel @Inject constructor(
     val typeFaceList: StateFlow<ArrayList<TypeFaceItem>> = _typeFaceList
 
     // Backing property to avoid selected TypeFace update from other classes
-    private val _selectedTypeFace = MutableStateFlow<TypeFaceItem>(TypeFaceItem(-1, Typeface.DEFAULT))
+    private val _selectedTypeFace = MutableStateFlow(TypeFaceItem(-1, Typeface.DEFAULT))
 
     // Ui gets current selected TypeFace from this property
     val selectedTypeFace: StateFlow<TypeFaceItem> = _selectedTypeFace

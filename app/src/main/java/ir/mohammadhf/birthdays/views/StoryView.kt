@@ -58,7 +58,12 @@ class StoryView @JvmOverloads constructor(
                 storyViewManager.onTouchUp(event)
             }
         }
+        performClick()
+        return true
+    }
 
+    override fun performClick(): Boolean {
+        super.performClick()
         return true
     }
 

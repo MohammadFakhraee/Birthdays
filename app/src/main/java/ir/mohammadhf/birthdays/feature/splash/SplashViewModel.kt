@@ -75,7 +75,7 @@ class SplashViewModel @Inject constructor(
         }
     }
 
-    fun setAlarm(context: Context) {
+    private fun setAlarm(context: Context) {
         if (!initialSharedPreferences.isAlarmSet()) {
             setTheAlarm(context, false)
             initialSharedPreferences.setAlarmSet(true)

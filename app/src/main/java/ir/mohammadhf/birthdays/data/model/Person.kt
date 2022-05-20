@@ -42,6 +42,6 @@ data class Person(
     fun isAfterToday(today: IntArray): Boolean =
         birthdayMonth > today[1] || (birthdayMonth == today[1] && birthdayDay > today[2])
 
-    fun isBeforeToday(today: IntArray): Boolean =
+    private fun isBeforeToday(today: IntArray): Boolean =
         !isAfterToday(today)
 }

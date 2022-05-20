@@ -261,7 +261,7 @@ class StoryBuilderFragment : BaseFragment<FragmentStoryBuilderBinding>() {
                 }
 
                 launch {
-                    storyBuilderViewModel.selectedTypeFace.collect { it ->
+                    storyBuilderViewModel.selectedTypeFace.collect {
                         requireBinding { addTextEt.typeface = it.typeFace }
                         typeFacePickerListAdapter.changeItem(it)
                     }
@@ -471,7 +471,7 @@ class StoryBuilderFragment : BaseFragment<FragmentStoryBuilderBinding>() {
                 } ?: MediaStore.Images.Media.EXTERNAL_CONTENT_URI
 
                 val contentValues = ContentValues().apply {
-                    put(MediaStore.Images.Media.DISPLAY_NAME, "${UUID.randomUUID().toString()}.jpg")
+                    put(MediaStore.Images.Media.DISPLAY_NAME, "${UUID.randomUUID()}.jpg")
                     put(MediaStore.Images.Media.MIME_TYPE, "image/jpeg")
                     put(MediaStore.Images.Media.WIDTH, resBitmap.width)
                     put(MediaStore.Images.Media.HEIGHT, resBitmap.height)
@@ -537,7 +537,6 @@ class StoryBuilderFragment : BaseFragment<FragmentStoryBuilderBinding>() {
     override fun isBottomNavShown(): Boolean = false
 
     companion object {
-        const val IMAGE_REQUEST_CODE = 3001
         const val TAG_COLOR_PICKER = 1
         const val TAG_TYPEFACE_PICKER = 0
     }

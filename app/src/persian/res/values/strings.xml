@@ -86,15 +86,15 @@
     <string name="bott_nav_gift">استوری</string>
 
     // content descriptions
-    <string name="content_desc_back">بازگشت</string>
-    <string name="content_desc_managing_groups">مدیریت گروه ها</string>
-    <string name="content_desc_remove">حذف کردن</string>
-    <string name="content_desc_group_add">افزودن گروه جدید</string>
-    <string name="content_desc_filter">فیلتر کردن</string>
-    <string name="content_desc_setting">تنظیمات</string>
-    <string name="content_desc_next_month">ماه بعد</string>
-    <string name="content_desc_prev_month">ماه قبل</string>
-    <string name="content_desc_add_birthday">افزودن تولد جدید</string>
+    <string name="content_desc_back">back button</string>
+    <string name="content_desc_remove">removing item</string>
+    <string name="content_desc_group_add">adding new group</string>
+    <string name="content_desc_filter">groups filtration</string>
+    <string name="content_desc_setting">settings button</string>
+    <string name="content_desc_next_month">showing next month</string>
+    <string name="content_desc_prev_month">showing previous month</string>
+    <string name="content_desc_add_birthday">adding new birthday</string>
+    <string name="content_desc_story_frame">a frame for creating birthday story</string>
 
     // story builder
     <string name="frames_title">انتخاب قاب استوری</string>

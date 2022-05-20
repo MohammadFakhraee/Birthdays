@@ -16,7 +16,7 @@ class FrameLayout(bitmap: Bitmap) : Layout(bitmap) {
     }
 
     override fun onDraw(canvas: Canvas) {
-        Log.i("OnDrawMethod", "Framen layout onDraw is called")
+        Log.i("OnDrawMethod", "Frame layout onDraw is called")
         canvas.drawBitmap(bitmap, cornerPoints[0].x, cornerPoints[0].y, null)
     }
 }
